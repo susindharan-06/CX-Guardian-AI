@@ -1,0 +1,19 @@
+{
+  "name": "cx-guardian",
+  "version": "1.0.0",
+  "description": "CX Guardian – Autonomous Customer Experience Recovery Platform",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node server/index.js"
+  },
+  "keywords": [
+    "customer-experience",
+    "ai-recovery",
+    "hackathon",
+    "autonomous-agents",
+    "root-cause-analysis"
+  ],
+  "author": "CX Guardian Team",
+  "license": "MIT"
+}

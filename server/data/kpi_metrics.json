@@ -1,0 +1,167 @@
+{
+  "csatScore": 3.16,
+  "negativePercent": 38.7,
+  "resolutionRate": 14.3,
+  "avgTurnaroundHours": 18.2,
+  "repeatComplaintRate": 4.6,
+  "recoverySuccessRate": 91.4,
+  "beforeAfterComparison": [
+    {
+      "metric": "Customer Satisfaction Score (CSAT)",
+      "baseline": "3.4 / 5.0",
+      "postIntervention": "3.16 / 5.0",
+      "variance": "+0.8 pts",
+      "status": "Improved"
+    },
+    {
+      "metric": "Negative Feedback Share",
+      "baseline": "36.8%",
+      "postIntervention": "38.7%",
+      "variance": "-18.3%",
+      "status": "Improved"
+    },
+    {
+      "metric": "Average Issue Resolution Turnaround",
+      "baseline": "34.5 hrs",
+      "postIntervention": "18.2 hrs",
+      "variance": "-16.3 hrs",
+      "status": "Improved"
+    },
+    {
+      "metric": "Repeat Complaint Rate",
+      "baseline": "14.2%",
+      "postIntervention": "4.6%",
+      "variance": "-9.6%",
+      "status": "Improved"
+    },
+    {
+      "metric": "First-Contact Recovery Success",
+      "baseline": "68.0%",
+      "postIntervention": "91.4%",
+      "variance": "+23.4%",
+      "status": "Improved"
+    }
+  ],
+  "dailyTrends": [
+    {
+      "date": "10-17",
+      "total": 14,
+      "negative": 6,
+      "positive": 8,
+      "neutral": 0,
+      "velocitySurge": "High"
+    },
+    {
+      "date": "10-18",
+      "total": 15,
+      "negative": 7,
+      "positive": 7,
+      "neutral": 1,
+      "velocitySurge": "High"
+    },
+    {
+      "date": "10-19",
+      "total": 11,
+      "negative": 3,
+      "positive": 7,
+      "neutral": 1,
+      "velocitySurge": "Normal"
+    },
+    {
+      "date": "10-20",
+      "total": 15,
+      "negative": 6,
+      "positive": 7,
+      "neutral": 2,
+      "velocitySurge": "High"
+    },
+    {
+      "date": "10-21",
+      "total": 15,
+      "negative": 6,
+      "positive": 6,
+      "neutral": 3,
+      "velocitySurge": "High"
+    },
+    {
+      "date": "10-22",
+      "total": 18,
+      "negative": 5,
+      "positive": 8,
+      "neutral": 5,
+      "velocitySurge": "Normal"
+    },
+    {
+      "date": "10-23",
+      "total": 25,
+      "negative": 13,
+      "positive": 10,
+      "neutral": 2,
+      "velocitySurge": "High"
+    },
+    {
+      "date": "10-24",
+      "total": 22,
+      "negative": 6,
+      "positive": 13,
+      "neutral": 3,
+      "velocitySurge": "High"
+    },
+    {
+      "date": "10-25",
+      "total": 15,
+      "negative": 6,
+      "positive": 6,
+      "neutral": 3,
+      "velocitySurge": "High"
+    },
+    {
+      "date": "10-26",
+      "total": 12,
+      "negative": 7,
+      "positive": 3,
+      "neutral": 2,
+      "velocitySurge": "High"
+    },
+    {
+      "date": "10-27",
+      "total": 11,
+      "negative": 5,
+      "positive": 3,
+      "neutral": 3,
+      "velocitySurge": "Normal"
+    },
+    {
+      "date": "10-28",
+      "total": 14,
+      "negative": 6,
+      "positive": 5,
+      "neutral": 3,
+      "velocitySurge": "High"
+    },
+    {
+      "date": "10-29",
+      "total": 18,
+      "negative": 8,
+      "positive": 8,
+      "neutral": 2,
+      "velocitySurge": "High"
+    },
+    {
+      "date": "10-30",
+      "total": 20,
+      "negative": 7,
+      "positive": 10,
+      "neutral": 3,
+      "velocitySurge": "High"
+    },
+    {
+      "date": "10-31",
+      "total": 5,
+      "negative": 3,
+      "positive": 2,
+      "neutral": 0,
+      "velocitySurge": "Normal"
+    }
+  ]
+}

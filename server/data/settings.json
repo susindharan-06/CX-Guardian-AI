@@ -1,0 +1,11 @@
+{
+  "geminiApiKey": "",
+  "geminiModel": "gemini-2.5-flash",
+  "weights": {
+    "severity": 0.3,
+    "frequency": 0.25,
+    "impact": 0.25,
+    "growth": 0.2
+  },
+  "updatedAt": "2026-10-31T08:41:56.145Z"
+}

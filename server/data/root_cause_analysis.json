@@ -1,0 +1,188 @@
+[
+  {
+    "issueId": "ISSUE-001",
+    "issueName": "Severe Delivery Delays & Hub Backlogs in Chennai Metro",
+    "category": "Delivery",
+    "probableRootCause": "ExpressLogistics regional sorting hub in Chennai is experiencing severe dispatch backlogs and courier shortages, resulting in average shipment transit times of 4.8 days versus the agreed 48-hour SLA target.",
+    "confidenceScore": 0.92,
+    "supportingEvidence": [
+      "45 complaints specifically report delivery delays exceeding 96 hours.",
+      "100.0% (45 orders) of delayed shipments in this cluster belong to ExpressLogistics.",
+      "Sorting depot telemetry indicates an average clearance latency of 74 hours (normal baseline: 18 hours).",
+      "Customer notification logs show repeated false 'attempted delivery' alerts triggered without agent phone outreach."
+    ],
+    "evidenceSources": [
+      "Fulfillment Dispatch Logs",
+      "ExpressLogistics Webhook Telemetry",
+      "Customer Support Escalation Tickets"
+    ],
+    "ruledOutAlternatives": [
+      "Local weather disruptions ruled out (normal regional conditions during recorded period).",
+      "Central warehouse picking delays ruled out (pick-and-pack times remained within target 4.2 hours).",
+      "Customer address ambiguity ruled out (<1.5% address validation flags recorded)."
+    ],
+    "affectedCustomersCount": 43,
+    "complaintCount": 45,
+    "topLocation": "Chennai",
+    "topEntity": "ExpressLogistics",
+    "updatedAt": "2026-10-31T08:41:56.201Z"
+  },
+  {
+    "issueId": "ISSUE-002",
+    "issueName": "Severe Delivery Delays & Hub Backlogs in Chennai Metro",
+    "category": "Delivery",
+    "probableRootCause": "ExpressLogistics regional sorting hub in Chennai is experiencing severe dispatch backlogs and courier shortages, resulting in average shipment transit times of 4.8 days versus the agreed 48-hour SLA target.",
+    "confidenceScore": 0.92,
+    "supportingEvidence": [
+      "56 complaints specifically report delivery delays exceeding 96 hours.",
+      "66.1% (37 orders) of delayed shipments in this cluster belong to ExpressLogistics.",
+      "Sorting depot telemetry indicates an average clearance latency of 74 hours (normal baseline: 18 hours).",
+      "Customer notification logs show repeated false 'attempted delivery' alerts triggered without agent phone outreach."
+    ],
+    "evidenceSources": [
+      "Fulfillment Dispatch Logs",
+      "ExpressLogistics Webhook Telemetry",
+      "Customer Support Escalation Tickets"
+    ],
+    "ruledOutAlternatives": [
+      "Local weather disruptions ruled out (normal regional conditions during recorded period).",
+      "Central warehouse picking delays ruled out (pick-and-pack times remained within target 4.2 hours).",
+      "Customer address ambiguity ruled out (<1.5% address validation flags recorded)."
+    ],
+    "affectedCustomersCount": 53,
+    "complaintCount": 56,
+    "topLocation": "Chennai",
+    "topEntity": "ExpressLogistics",
+    "updatedAt": "2026-10-31T08:41:56.201Z"
+  },
+  {
+    "issueId": "ISSUE-003",
+    "issueName": "Payment Gateway Callback Timeout & Delayed Refund Reversals",
+    "category": "Refund",
+    "probableRootCause": "UPI and Payment Gateway webhook callback latency exceeded the 30-second connection timeout, failing to post transaction settlement confirmations to the core order management system.",
+    "confidenceScore": 0.89,
+    "supportingEvidence": [
+      "19 customers experienced automated order failure despite successful bank account debits.",
+      "Payment gateway API logs reveal an average webhook timeout rate of 14.8% during peak checkout hours.",
+      "Overdue refund queue expanded to ₹4,82,000 across 19 distinct customer accounts."
+    ],
+    "evidenceSources": [
+      "Payment Gateway Settlement Webhooks",
+      "Core Banking Reconciliation API",
+      "Billing Support Queues"
+    ],
+    "ruledOutAlternatives": [
+      "User checkout abandonment ruled out (valid authorization tokens were issued by acquiring banks).",
+      "Customer bank account invalidity ruled out (98.2% passed IFSC/UPI VPA checksums)."
+    ],
+    "affectedCustomersCount": 19,
+    "complaintCount": 19,
+    "topLocation": "Chennai",
+    "topEntity": "ExpressLogistics",
+    "updatedAt": "2026-10-31T08:41:56.201Z"
+  },
+  {
+    "issueId": "ISSUE-004",
+    "issueName": "Payment Gateway Callback Timeout & Delayed Refund Reversals",
+    "category": "Payment",
+    "probableRootCause": "UPI and Payment Gateway webhook callback latency exceeded the 30-second connection timeout, failing to post transaction settlement confirmations to the core order management system.",
+    "confidenceScore": 0.89,
+    "supportingEvidence": [
+      "32 customers experienced automated order failure despite successful bank account debits.",
+      "Payment gateway API logs reveal an average webhook timeout rate of 14.8% during peak checkout hours.",
+      "Overdue refund queue expanded to ₹4,82,000 across 30 distinct customer accounts."
+    ],
+    "evidenceSources": [
+      "Payment Gateway Settlement Webhooks",
+      "Core Banking Reconciliation API",
+      "Billing Support Queues"
+    ],
+    "ruledOutAlternatives": [
+      "User checkout abandonment ruled out (valid authorization tokens were issued by acquiring banks).",
+      "Customer bank account invalidity ruled out (98.2% passed IFSC/UPI VPA checksums)."
+    ],
+    "affectedCustomersCount": 30,
+    "complaintCount": 32,
+    "topLocation": "Bangalore",
+    "topEntity": "Delhivery Prime",
+    "updatedAt": "2026-10-31T08:41:56.201Z"
+  },
+  {
+    "issueId": "ISSUE-005",
+    "issueName": "Smart Air Purifier X1 Optical PM2.5 Sensor Calibration Defect",
+    "category": "Product Quality",
+    "probableRootCause": "Manufacturing batch #QA-2026-X1 of Smart Air Purifier X1 contains an uncalibrated optical PM2.5 dust sensor resistor, triggering false 999 AQI readouts and continuous warning alerts.",
+    "confidenceScore": 0.94,
+    "supportingEvidence": [
+      "25 customer complaints explicitly cite persistent 999 AQI errors and abnormal motor noise.",
+      "All defective units trace back to Assembly Line 4, Factory Unit B (Production run Oct 10 - Oct 18).",
+      "Hardware return authorization requests for Smart Air Purifier X1 spiked by +320% relative to historical 0.8% return rate."
+    ],
+    "evidenceSources": [
+      "Hardware Factory QA Batch Logs",
+      "RMA (Return Material Authorization) Records",
+      "Product Warranty Registration DB"
+    ],
+    "ruledOutAlternatives": [
+      "In-transit courier drop damage ruled out (outer retail packaging showed zero physical crush damage).",
+      "User operational error ruled out (defects manifest instantly on initial power cycle)."
+    ],
+    "affectedCustomersCount": 25,
+    "complaintCount": 25,
+    "topLocation": "Chennai",
+    "topEntity": "Delhivery Prime",
+    "updatedAt": "2026-10-31T08:41:56.202Z"
+  },
+  {
+    "issueId": "ISSUE-006",
+    "issueName": "Automated Support IVR Escalation Loops & Call Drops",
+    "category": "Customer Support",
+    "probableRootCause": "Customer support contact center telephony routing script failed to transition callers to tier-2 specialist agents after chatbot escalation.",
+    "confidenceScore": 0.84,
+    "supportingEvidence": [
+      "15 customers reported chatbot infinite escalation loops and call drops.",
+      "Average queue wait time exceeded 42 minutes before automated line termination.",
+      "Support ticket backlog grew by 68 tickets without agent assignment."
+    ],
+    "evidenceSources": [
+      "Cloud Contact Center IVR Logs",
+      "Zendesk Routing Engine",
+      "Chatbot Fallback Telemetry"
+    ],
+    "ruledOutAlternatives": [
+      "Internet service provider downtime ruled out (telephony SIP trunk status remained green).",
+      "Customer phone connectivity issues ruled out (telecom carrier handshake succeeded)."
+    ],
+    "affectedCustomersCount": 15,
+    "complaintCount": 15,
+    "topLocation": "Bangalore",
+    "topEntity": "Shadowfax Logistics",
+    "updatedAt": "2026-10-31T08:41:56.202Z"
+  },
+  {
+    "issueId": "ISSUE-007",
+    "issueName": "Emerging Customer Friction Pattern (worst, logistics, service)",
+    "category": "Other",
+    "probableRootCause": "Customer support contact center telephony routing script failed to transition callers to tier-2 specialist agents after chatbot escalation.",
+    "confidenceScore": 0.84,
+    "supportingEvidence": [
+      "11 customers reported chatbot infinite escalation loops and call drops.",
+      "Average queue wait time exceeded 42 minutes before automated line termination.",
+      "Support ticket backlog grew by 68 tickets without agent assignment."
+    ],
+    "evidenceSources": [
+      "Cloud Contact Center IVR Logs",
+      "Zendesk Routing Engine",
+      "Chatbot Fallback Telemetry"
+    ],
+    "ruledOutAlternatives": [
+      "Internet service provider downtime ruled out (telephony SIP trunk status remained green).",
+      "Customer phone connectivity issues ruled out (telecom carrier handshake succeeded)."
+    ],
+    "affectedCustomersCount": 11,
+    "complaintCount": 11,
+    "topLocation": "Chennai",
+    "topEntity": "ExpressLogistics",
+    "updatedAt": "2026-10-31T08:41:56.202Z"
+  }
+]

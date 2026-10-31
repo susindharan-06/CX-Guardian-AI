@@ -1,0 +1,6 @@
+customer_id,feedback_id,feedback_text,rating,product,location,source,date,order_id,transaction_id,delivery_partner,order_status,refund_status
+CUST-1042,FB-SAMPLE-1,"[DEMO DATA] Package delayed by 5 days in Chennai. Tracking says out for delivery but ExpressLogistics agent never arrived.",1,SmartHome Hub Pro,Chennai,Customer Reviews,2026-10-28,ORD-2026-10294,TXN-9482910,ExpressLogistics,In Transit - Delayed,None
+CUST-1190,FB-SAMPLE-2,"[DEMO DATA] UPI deduction completed but order failed. Refund not initiated after 6 business days.",1,Smart Air Purifier X1,Bangalore,Support Tickets,2026-10-27,ORD-2026-44910,TXN-3829104,BlueDart Express,Failed,Processing Overdue
+CUST-1345,FB-SAMPLE-3,"[DEMO DATA] PM2.5 sensor continuously blinking 999 AQI. Device rattles on sleep mode.",1,Smart Air Purifier X1,Mumbai,Social Media,2026-10-25,ORD-2026-78291,TXN-2849102,Delhivery Prime,Delivered,Return Requested
+CUST-1402,FB-SAMPLE-4,"[DEMO DATA] Excellent build quality and super fast delivery within 24 hours in Delhi.",5,UltraSound ANC Headphones,Delhi,Customer Reviews,2026-10-29,ORD-2026-94812,TXN-1928472,BlueDart Express,Delivered,None
+CUST-1588,FB-SAMPLE-5,"[DEMO DATA] Standard product. Setup took a little longer than expected but works fine.",3,4K Security Camera 360,Hyderabad,Customer Surveys,2026-10-26,ORD-2026-58193,TXN-8472910,Shadowfax Logistics,Delivered,None

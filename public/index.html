@@ -1,0 +1,2351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CX Guardian – Autonomous Customer Experience Recovery Platform</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2314b8a6' stroke-width='2'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/><path d='m9 12 2 2 4-4'/></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              950: '#070c18',
+              900: '#0b1329',
+              850: '#0e1730',
+              800: '#111d3d',
+              750: '#16244b',
+              700: '#1e3266',
+              600: '#2b4488'
+            },
+            teal: {
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+               glow: 'rgba(20, 184, 166, 0.22)'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #070c18;
+      color: #f1f5f9;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0b1329;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e3266;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #14b8a6;
+    }
+    .teal-glow {
+      box-shadow: 0 0 20px -3px rgba(20, 184, 166, 0.25);
+    }
+    .teal-glow-sm {
+      box-shadow: 0 0 10px -2px rgba(20, 184, 166, 0.2);
+    }
+    .red-glow-sm {
+      box-shadow: 0 0 10px -2px rgba(239, 68, 68, 0.25);
+    }
+    .glass-card {
+      background: rgba(14, 23, 48, 0.78);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(30, 50, 102, 0.45);
+    }
+    .glass-card:hover {
+      border-color: rgba(45, 212, 191, 0.28);
+    }
+    /* Print Stylesheet for Reports */
+    @media print {
+      body { background: white; color: black; }
+      #sidebar, #top-header, .no-print { display: none !important; }
+      main { margin-left: 0 !important; padding: 0 !important; width: 100% !important; }
+      .glass-card { border: 1px solid #ccc !important; background: white !important; color: black !important; }
+      .text-slate-400, .text-slate-300 { color: #555 !important; }
+      .text-white { color: #000 !important; }
+    }
+  </style>
+</head>
+<body class="bg-navy-950 text-slate-100 flex min-h-screen antialiased selection:bg-teal-500 selection:text-navy-950">
+
+  <!-- ============================================================ -->
+  <!-- FIXED LEFT SIDEBAR -->
+  <!-- ============================================================ -->
+  <aside id="sidebar" class="w-64 bg-navy-900 border-r border-navy-800/80 fixed inset-y-0 left-0 z-40 flex flex-col justify-between select-none">
+    <div>
+      <!-- Brand Logo Header -->
+      <div class="px-5 py-5 flex items-center gap-3 border-b border-navy-800/60">
+        <div class="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 teal-glow-sm shadow-inner">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-base font-bold tracking-tight text-white flex items-center gap-1.5">
+            CX Guardian
+          </h1>
+          <p class="text-[10px] tracking-wider uppercase font-semibold text-teal-400/80">AI Recovery Platform</p>
+        </div>
+      </div>
+
+      <!-- Workspace Selector -->
+      <div class="px-3.5 py-3.5">
+        <div class="w-full bg-navy-950/70 border border-navy-800 rounded-lg px-3 py-2 flex items-center justify-between text-xs text-slate-300 hover:border-navy-700 cursor-pointer transition">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+            <span class="font-medium text-slate-200">Demo workspace</span>
+          </div>
+          <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Navigation Section -->
+      <div class="px-3 py-1">
+        <p class="text-[11px] font-bold text-slate-400/80 uppercase tracking-widest px-3 mb-2">Workspace</p>
+        <nav class="space-y-1" id="nav-links">
+          <!-- 1. Overview -->
+          <button onclick="navigate('overview')" data-page="overview" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold transition text-teal-300 bg-teal-500/15 border-l-4 border-teal-400">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+            <span>Overview</span>
+          </button>
+
+          <!-- 2. Feedback -->
+          <button onclick="navigate('feedback')" data-page="feedback" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-navy-800/50 transition">
+            <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+            <span>Feedback</span>
+            <span id="nav-feedback-badge" class="ml-auto text-[10px] bg-navy-800 text-teal-300 px-1.5 py-0.5 rounded-full font-mono">...</span>
+          </button>
+
+          <!-- 3. Detected Issues -->
+          <button onclick="navigate('issues')" data-page="issues" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-navy-800/50 transition">
+            <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+            <span>Detected issues</span>
+            <span id="nav-issues-badge" class="ml-auto text-[10px] bg-red-950/80 text-red-400 border border-red-800 px-1.5 py-0.5 rounded-full font-mono">0</span>
+          </button>
+
+          <!-- 4. Root Cause Analysis -->
+          <button onclick="navigate('root-cause')" data-page="root-cause" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-navy-800/50 transition">
+            <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
+            <span>Root Cause Analysis</span>
+          </button>
+
+          <!-- 5. Customer Segments -->
+          <button onclick="navigate('segments')" data-page="segments" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-navy-800/50 transition">
+            <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+            <span>Customer Segments</span>
+          </button>
+
+          <!-- 6. Interventions -->
+          <button onclick="navigate('interventions')" data-page="interventions" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-navy-800/50 transition">
+            <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
+            <span>Interventions</span>
+          </button>
+
+          <!-- 7. KPI Monitoring -->
+          <button onclick="navigate('kpis')" data-page="kpis" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-navy-800/50 transition">
+            <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+            <span>KPI monitoring</span>
+          </button>
+
+          <!-- 8. Reports -->
+          <button onclick="navigate('reports')" data-page="reports" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-navy-800/50 transition">
+            <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+            <span>Reports</span>
+          </button>
+
+          <!-- 9. Settings -->
+          <button onclick="navigate('settings')" data-page="settings" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-navy-800/50 transition">
+            <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            <span>Settings</span>
+          </button>
+        </nav>
+      </div>
+    </div>
+
+    <!-- User Profile Footer -->
+    <div class="px-4 py-3.5 border-t border-navy-800/80 bg-navy-950/40 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-full border-2 border-teal-400/70 p-0.5 flex items-center justify-center bg-navy-800">
+          <div class="w-full h-full rounded-full bg-teal-500/30 flex items-center justify-center text-teal-300 text-xs font-bold">
+            OA
+          </div>
+        </div>
+        <div class="leading-tight">
+          <p class="text-xs font-semibold text-white">Owner</p>
+          <p class="text-[10px] text-slate-400">Administrator</p>
+        </div>
+      </div>
+      <button onclick="showToast('Logged in as Administrator')" title="Session Info" class="text-slate-400 hover:text-white p-1 rounded transition">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ============================================================ -->
+  <!-- MAIN CONTENT AREA -->
+  <!-- ============================================================ -->
+  <div class="ml-64 flex-1 flex flex-col min-w-0">
+
+    <!-- Top Sticky Header -->
+    <header id="top-header" class="h-16 border-b border-navy-800/80 bg-navy-950/80 backdrop-blur-md sticky top-0 z-30 px-8 flex items-center justify-between">
+      <div>
+        <p id="page-breadcrumb" class="text-[11px] font-mono uppercase tracking-wider text-slate-400">Customer Experience / Overview</p>
+        <h2 id="page-title" class="text-lg font-bold text-white tracking-tight">Overview</h2>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <!-- Live System Status Indicator -->
+        <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-navy-900 border border-navy-800 text-xs text-slate-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-[11px] font-medium">System online</span>
+        </div>
+
+        <!-- Reload Button -->
+        <button onclick="refreshData()" title="Reload Data" id="btn-refresh" class="w-8 h-8 rounded-full border border-navy-800 hover:border-navy-700 bg-navy-900 flex items-center justify-center text-slate-300 hover:text-white transition">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+        </button>
+
+        <!-- Quick Settings Button -->
+        <button onclick="navigate('settings')" title="Configure Settings" class="w-8 h-8 rounded-full border border-navy-800 hover:border-navy-700 bg-navy-900 flex items-center justify-center text-slate-300 hover:text-white transition">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg>
+        </button>
+
+        <!-- Signature "Run CX Analysis" Teal Action Button -->
+        <button onclick="triggerAnalysis()" id="btn-run-analysis" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-500 hover:bg-teal-400 text-navy-950 font-bold text-xs tracking-wide shadow-lg shadow-teal-500/20 hover:shadow-teal-500/40 transition active:scale-95">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+          <span>Run CX analysis</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Page Body Container -->
+    <main class="flex-1 p-8">
+
+      <!-- ======================================================== -->
+      <!-- 1. OVERVIEW PAGE -->
+      <!-- ======================================================== -->
+      <section id="page-overview" class="page-content space-y-6">
+        <!-- Subheader -->
+        <div>
+          <h3 class="text-sm font-semibold text-slate-200">Customer experience command center</h3>
+          <p class="text-xs text-slate-400">Turn customer signals into evidence-backed recovery actions.</p>
+        </div>
+
+        <!-- 7 Metric Cards -->
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3.5">
+          <div class="glass-card rounded-xl p-4 transition">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-[11px] font-medium">Total Feedback</span>
+              <svg class="w-4 h-4 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <div class="text-2xl font-bold text-white font-mono" id="stat-total-feedback">0</div>
+            <p class="text-[10px] text-slate-400 mt-1">Live customer records</p>
+          </div>
+
+          <div class="glass-card rounded-xl p-4 transition border-red-900/30">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-[11px] font-medium">Negative Signals</span>
+              <svg class="w-4 h-4 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            </div>
+            <div class="text-2xl font-bold text-red-400 font-mono" id="stat-negative-feedback">0</div>
+            <p class="text-[10px] text-slate-400 mt-1">Classified complaints</p>
+          </div>
+
+          <div class="glass-card rounded-xl p-4 transition">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-[11px] font-medium">Detected Issues</span>
+              <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div class="text-2xl font-bold text-white font-mono" id="stat-detected-issues">0</div>
+            <p class="text-[10px] text-slate-400 mt-1">Emerging clusters</p>
+          </div>
+
+          <div class="glass-card rounded-xl p-4 transition">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-[11px] font-medium">Critical Issues</span>
+              <svg class="w-4 h-4 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div class="text-2xl font-bold text-rose-400 font-mono" id="stat-critical-issues">0</div>
+            <p class="text-[10px] text-slate-400 mt-1">SLA breach risk</p>
+          </div>
+
+          <div class="glass-card rounded-xl p-4 transition">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-[11px] font-medium">Affected Users</span>
+              <svg class="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            </div>
+            <div class="text-2xl font-bold text-white font-mono" id="stat-affected-customers">0</div>
+            <p class="text-[10px] text-slate-400 mt-1">Identified accounts</p>
+          </div>
+
+          <div class="glass-card rounded-xl p-4 transition">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-[11px] font-medium">Recovery Actions</span>
+              <svg class="w-4 h-4 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            </div>
+            <div class="text-2xl font-bold text-teal-300 font-mono" id="stat-recovery-actions">0</div>
+            <p class="text-[10px] text-slate-400 mt-1">SOP protocols</p>
+          </div>
+
+          <div class="glass-card rounded-xl p-4 transition">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-[11px] font-medium">Resolved Issues</span>
+              <svg class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div class="text-2xl font-bold text-emerald-400 font-mono" id="stat-resolved-issues">0</div>
+            <p class="text-[10px] text-slate-400 mt-1">Verified recovered</p>
+          </div>
+        </div>
+
+        <!-- AI Business Recovery Intelligence Banner -->
+        <div class="p-4 rounded-xl bg-gradient-to-r from-teal-950/60 via-navy-900 to-navy-850 border border-teal-500/30 flex items-start gap-4 teal-glow-sm">
+          <div class="w-10 h-10 rounded-lg bg-teal-500/20 text-teal-300 flex items-center justify-center shrink-0 border border-teal-500/40 mt-0.5">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <div class="flex-1 text-xs">
+            <div class="flex items-center justify-between mb-1">
+              <span class="font-bold text-teal-300 tracking-wide uppercase text-[11px]">AI Business Recovery Intelligence</span>
+              <span class="text-[10px] font-mono text-slate-400">DistilBERT & KMeans Clustering</span>
+            </div>
+            <p class="text-slate-200 leading-relaxed" id="banner-ai-text">
+              Delivery complaints in Chennai surged by <strong class="text-teal-300 font-semibold">+45.2%</strong> over the rolling 14-day window. Over <strong class="text-white font-semibold">65 customers</strong> are affected. Cross-referenced carrier telemetry confirms <strong class="text-teal-300">ExpressLogistics</strong> transit depot bottleneck (84.2% delayed shipments).
+              <span class="text-slate-300">Recommended action: Activate route failover to BlueDart priority network & trigger proactive ₹250 wallet credit.</span>
+            </p>
+          </div>
+          <button onclick="navigate('interventions')" class="px-3 py-1.5 rounded-lg bg-teal-500/15 hover:bg-teal-500/30 text-teal-300 border border-teal-500/40 text-xs font-semibold whitespace-nowrap transition">
+            View Intervention →
+          </button>
+        </div>
+
+        <!-- Charts Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Chart 1: Issue Signal Volume by Category -->
+          <div class="glass-card rounded-xl p-5">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h4 class="text-xs font-bold text-white uppercase tracking-wider">Complaint Category Distribution</h4>
+                <p class="text-[11px] text-slate-400">NLP classification across feedback records</p>
+              </div>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-navy-800 text-teal-300 border border-navy-700">Live signals</span>
+            </div>
+            <div id="chart-categories" class="space-y-3 pt-2">
+              <!-- Dynamically rendered bars -->
+            </div>
+          </div>
+
+          <!-- Chart 2: Customer Sentiment Breakdown -->
+          <div class="glass-card rounded-xl p-5">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h4 class="text-xs font-bold text-white uppercase tracking-wider">Customer Sentiment Distribution</h4>
+                <p class="text-[11px] text-slate-400">DistilBERT sentiment confidence scoring</p>
+              </div>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-navy-800 text-slate-300 border border-navy-700">Confidence: 0.88</span>
+            </div>
+            <div class="flex items-center justify-around py-3">
+              <!-- SVG Donut Chart -->
+              <div class="relative w-36 h-36">
+                <svg viewBox="0 0 36 36" class="w-full h-full -rotate-90">
+                  <!-- Background circle -->
+                  <path class="text-navy-800" stroke-width="4.5" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <!-- Positive arc (Teal) -->
+                  <path id="donut-positive" stroke-dasharray="52, 100" class="text-teal-400" stroke-width="4.5" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <!-- Negative arc (Red) -->
+                  <path id="donut-negative" stroke-dasharray="32, 100" stroke-dashoffset="-52" class="text-rose-500" stroke-width="4.5" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <!-- Neutral arc (Slate) -->
+                  <path id="donut-neutral" stroke-dasharray="16, 100" stroke-dashoffset="-84" class="text-amber-400" stroke-width="4.5" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                  <span class="text-xl font-bold font-mono text-white" id="donut-total">520+</span>
+                  <span class="text-[9px] text-slate-400 uppercase tracking-wider">Signals</span>
+                </div>
+              </div>
+              <div class="space-y-2 text-xs">
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-teal-400"></span>
+                  <span class="text-slate-300">Positive: <strong class="text-white font-mono" id="sent-pos-val">52%</strong></span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                  <span class="text-slate-300">Negative: <strong class="text-white font-mono" id="sent-neg-val">30%</strong></span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                  <span class="text-slate-300">Neutral: <strong class="text-white font-mono" id="sent-neu-val">18%</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Latest Detected Issues & Workflow Status -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Latest Detected Issues Feed -->
+          <div class="lg:col-span-2 glass-card rounded-xl p-5">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h4 class="text-xs font-bold text-white uppercase tracking-wider">Latest Detected Issues</h4>
+                <p class="text-[11px] text-slate-400">Emerging clusters prioritized by impact score</p>
+              </div>
+              <button onclick="navigate('issues')" class="text-xs text-teal-400 hover:text-teal-300 font-semibold flex items-center gap-1 transition">
+                View all <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+            <div id="overview-issues-list" class="space-y-2.5">
+              <!-- Dynamically inserted issue cards -->
+            </div>
+          </div>
+
+          <!-- Autonomous Recovery Workflow Tracker -->
+          <div class="glass-card rounded-xl p-5">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h4 class="text-xs font-bold text-white uppercase tracking-wider">Autonomous Recovery Chain</h4>
+                <p class="text-[11px] text-slate-400">Evidence-to-action workflow</p>
+              </div>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-teal-500/10 text-teal-400 border border-teal-500/30">Evidence-led</span>
+            </div>
+            <div class="space-y-3" id="autonomous-workflow-steps">
+              <!-- Dynamically populated steps -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- 2. FEEDBACK PAGE -->
+      <!-- ======================================================== -->
+      <section id="page-feedback" class="page-content hidden space-y-6">
+        <!-- Header with Action Buttons -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h3 class="text-sm font-semibold text-slate-200">Customer feedback management</h3>
+            <p class="text-xs text-slate-400">Reviews, surveys, tickets and contact center signals in one place.</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <!-- Seed Demo Records Button -->
+            <button onclick="seedDemoDataset()" class="px-3 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-teal-300 border border-teal-500/30 text-xs font-semibold flex items-center gap-1.5 transition">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+              Seed 520+ Demo Data
+            </button>
+            <!-- Download Sample CSV -->
+            <a href="/api/feedback/sample-csv" download class="px-3 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-700 text-slate-300 border border-navy-700 text-xs font-medium flex items-center gap-1.5 transition">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              Sample CSV
+            </a>
+            <!-- Import CSV Button -->
+            <button onclick="openCsvModal()" class="px-3 py-1.5 rounded-lg border border-teal-500/40 text-teal-300 hover:bg-teal-500/10 text-xs font-medium flex items-center gap-1.5 transition">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+              Import CSV
+            </button>
+            <!-- Add Feedback Button -->
+            <button onclick="openAddFeedbackModal()" class="px-3 py-1.5 rounded-lg bg-teal-500 hover:bg-teal-400 text-navy-950 text-xs font-bold flex items-center gap-1.5 transition">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+              Add feedback
+            </button>
+          </div>
+        </div>
+
+        <!-- Search & 5 Multi-Filters Bar -->
+        <div class="glass-card rounded-xl p-4 space-y-3">
+          <!-- Text Search Input -->
+          <div class="relative">
+            <svg class="w-4 h-4 text-slate-400 absolute left-3 top-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input type="text" id="feedback-search" oninput="debounceFeedbackSearch()" placeholder="Search feedback text, customer ID, order ID, or carrier..." class="w-full bg-navy-950/80 border border-navy-800 rounded-lg pl-9 pr-4 py-2 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-teal-500 transition">
+          </div>
+
+          <!-- 5 Multi-Filters -->
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs">
+            <div>
+              <label class="block text-[10px] font-medium text-slate-400 mb-1">Sentiment</label>
+              <select id="filter-sentiment" onchange="loadFeedback(1)" class="w-full bg-navy-950 border border-navy-800 rounded px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-teal-500">
+                <option value="All">All Sentiments</option>
+                <option value="Negative">Negative Only</option>
+                <option value="Positive">Positive Only</option>
+                <option value="Neutral">Neutral Only</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[10px] font-medium text-slate-400 mb-1">Category</label>
+              <select id="filter-category" onchange="loadFeedback(1)" class="w-full bg-navy-950 border border-navy-800 rounded px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-teal-500">
+                <option value="All">All Categories</option>
+                <option value="Delivery">Delivery</option>
+                <option value="Refund">Refund</option>
+                <option value="Payment">Payment</option>
+                <option value="Product Quality">Product Quality</option>
+                <option value="Customer Support">Customer Support</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[10px] font-medium text-slate-400 mb-1">Location / Hub</label>
+              <select id="filter-location" onchange="loadFeedback(1)" class="w-full bg-navy-950 border border-navy-800 rounded px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-teal-500">
+                <option value="All">All Locations</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Pune">Pune</option>
+                <option value="Coimbatore">Coimbatore</option>
+                <option value="Madurai">Madurai</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[10px] font-medium text-slate-400 mb-1">Product</label>
+              <select id="filter-product" onchange="loadFeedback(1)" class="w-full bg-navy-950 border border-navy-800 rounded px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-teal-500">
+                <option value="All">All Products</option>
+                <option value="SmartHome Hub Pro">SmartHome Hub Pro</option>
+                <option value="Smart Air Purifier X1">Smart Air Purifier X1</option>
+                <option value="UltraSound ANC Headphones">UltraSound ANC Headphones</option>
+                <option value="4K Security Camera 360">4K Security Camera 360</option>
+                <option value="ErgoDesk Smart Controller">ErgoDesk Smart Controller</option>
+                <option value="SwiftCharge 100W PowerBank">SwiftCharge 100W PowerBank</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[10px] font-medium text-slate-400 mb-1">Source Channel</label>
+              <select id="filter-source" onchange="loadFeedback(1)" class="w-full bg-navy-950 border border-navy-800 rounded px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-teal-500">
+                <option value="All">All Sources</option>
+                <option value="Customer Reviews">Customer Reviews</option>
+                <option value="Customer Surveys">Customer Surveys</option>
+                <option value="Support Tickets">Support Tickets</option>
+                <option value="Social Media">Social Media</option>
+                <option value="Contact Center">Contact Center</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feedback Data Table -->
+        <div class="glass-card rounded-xl overflow-hidden border border-navy-800">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-navy-900/90 text-[11px] font-semibold text-slate-400 uppercase tracking-wider border-b border-navy-800 select-none">
+                <tr>
+                  <th class="py-3 px-4">Feedback ID & Date</th>
+                  <th class="py-3 px-4">Customer & Channel</th>
+                  <th class="py-3 px-4">Region & Product</th>
+                  <th class="py-3 px-4 w-2/5">Feedback Content</th>
+                  <th class="py-3 px-4">Sentiment & Rating</th>
+                  <th class="py-3 px-4 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="feedback-table-body" class="divide-y divide-navy-800/60">
+                <!-- Dynamically rendered feedback rows -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination Footer -->
+          <div class="p-3 bg-navy-950/60 border-t border-navy-800 flex items-center justify-between text-xs text-slate-400">
+            <div>
+              Showing <span id="pag-start" class="font-mono text-white">0</span> to <span id="pag-end" class="font-mono text-white">0</span> of <span id="pag-total" class="font-mono text-teal-300">0</span> records
+            </div>
+            <div class="flex items-center gap-1.5">
+              <button onclick="prevFeedbackPage()" id="btn-prev-page" class="px-2.5 py-1 rounded bg-navy-800 hover:bg-navy-700 text-slate-300 disabled:opacity-40 transition">Previous</button>
+              <span id="pag-current-page" class="px-2 font-mono text-white">Page 1</span>
+              <button onclick="nextFeedbackPage()" id="btn-next-page" class="px-2.5 py-1 rounded bg-navy-800 hover:bg-navy-700 text-slate-300 disabled:opacity-40 transition">Next</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- 3. DETECTED ISSUES PAGE -->
+      <!-- ======================================================== -->
+      <section id="page-issues" class="page-content hidden space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h3 class="text-sm font-semibold text-slate-200">Detected customer experience issues</h3>
+            <p class="text-xs text-slate-400">Emerging problem clusters grouped via NLP vectorization & KMeans.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <select id="issue-filter-severity" onchange="loadDetectedIssues()" class="bg-navy-900 border border-navy-800 text-xs text-slate-200 rounded px-2.5 py-1.5">
+              <option value="All">All Severities</option>
+              <option value="Critical">Critical Only</option>
+              <option value="High">High Only</option>
+              <option value="Medium">Medium Only</option>
+              <option value="Low">Low Only</option>
+            </select>
+            <select id="issue-sort-by" onchange="loadDetectedIssues()" class="bg-navy-900 border border-navy-800 text-xs text-slate-200 rounded px-2.5 py-1.5">
+              <option value="priority">Sort: Priority Score (High to Low)</option>
+              <option value="complaints">Sort: Complaint Count</option>
+              <option value="recency">Sort: Most Recent</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Issue Cards List -->
+        <div id="detected-issues-container" class="space-y-4">
+          <!-- Dynamically populated issue cards with expandable evidence drawers -->
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- 4. ROOT CAUSE ANALYSIS PAGE -->
+      <!-- ======================================================== -->
+      <section id="page-root-cause" class="page-content hidden space-y-6">
+        <div>
+          <h3 class="text-sm font-semibold text-slate-200">Evidence-Based Root Cause Discovery</h3>
+          <p class="text-xs text-slate-400">Correlating customer complaints with logistics telemetry, payment gateways & factory QA records.</p>
+        </div>
+
+        <div id="root-cause-cards-container" class="space-y-6">
+          <!-- Dynamically populated root cause cards -->
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- 5. CUSTOMER SEGMENTS PAGE -->
+      <!-- ======================================================== -->
+      <section id="page-segments" class="page-content hidden space-y-6">
+        <div>
+          <h3 class="text-sm font-semibold text-slate-200">Customer Impact & Churn Risk Segmentation</h3>
+          <p class="text-xs text-slate-400">Vulnerability matrix tracking repeatedly impacted high-value accounts.</p>
+        </div>
+
+        <!-- Geographic & Tier Distribution Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Geographic Exposure -->
+          <div class="glass-card rounded-xl p-5">
+            <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-1">Geographic Impact Breakdown</h4>
+            <p class="text-[11px] text-slate-400 mb-3">Cities experiencing highest complaint velocity</p>
+            <div id="segments-geo-list" class="space-y-2.5">
+              <!-- Dynamically populated geo rows -->
+            </div>
+          </div>
+
+          <!-- Customer Tier Exposure -->
+          <div class="glass-card rounded-xl p-5">
+            <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-1">Impact by Customer Tier</h4>
+            <p class="text-[11px] text-slate-400 mb-3">Enterprise & VIP churn vulnerability</p>
+            <div id="segments-tier-list" class="space-y-2.5">
+              <!-- Dynamically populated tier rows -->
+            </div>
+          </div>
+
+          <!-- Product Line Exposure -->
+          <div class="glass-card rounded-xl p-5">
+            <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-1">Product Line Failure Rates</h4>
+            <p class="text-[11px] text-slate-400 mb-3">Hardware defect concentrations</p>
+            <div id="segments-prod-list" class="space-y-2.5">
+              <!-- Dynamically populated product rows -->
+            </div>
+          </div>
+        </div>
+
+        <!-- High-Value At-Risk Accounts Table -->
+        <div class="glass-card rounded-xl p-5">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h4 class="text-xs font-bold text-white uppercase tracking-wider">At-Risk High-Value Accounts (Vulnerability Matrix)</h4>
+              <p class="text-[11px] text-slate-400">Accounts suffering multiple negative experiences prioritized for executive outreach</p>
+            </div>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-rose-950/80 text-rose-400 border border-rose-800">High Churn Risk</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-navy-900/80 text-[11px] text-slate-400 uppercase tracking-wider border-b border-navy-800">
+                <tr>
+                  <th class="py-2.5 px-3">Customer ID</th>
+                  <th class="py-2.5 px-3">Tier</th>
+                  <th class="py-2.5 px-3">Region</th>
+                  <th class="py-2.5 px-3">Complaints</th>
+                  <th class="py-2.5 px-3">Avg Rating</th>
+                  <th class="py-2.5 px-3">Risk Assessment</th>
+                  <th class="py-2.5 px-3 text-right">LTV Exposure</th>
+                </tr>
+              </thead>
+              <tbody id="at-risk-customers-table" class="divide-y divide-navy-800/60">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- 6. INTERVENTIONS PAGE -->
+      <!-- ======================================================== -->
+      <section id="page-interventions" class="page-content hidden space-y-6">
+        <div>
+          <h3 class="text-sm font-semibold text-slate-200">Intervention Center & Recovery SOPs</h3>
+          <p class="text-xs text-slate-400">Review, approve and execute standard operating recovery actions with department routing.</p>
+        </div>
+
+        <div id="interventions-container" class="space-y-4">
+          <!-- Dynamically rendered intervention cards with manager decision controls -->
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- 7. KPI MONITORING PAGE -->
+      <!-- ======================================================== -->
+      <section id="page-kpis" class="page-content hidden space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h3 class="text-sm font-semibold text-slate-200">Outcome KPI Monitoring</h3>
+            <p class="text-xs text-slate-400">Measurable impact tracking before vs. after autonomous recovery interventions.</p>
+          </div>
+          <div class="flex items-center gap-1 bg-navy-900 border border-navy-800 rounded-lg p-0.5 text-xs">
+            <button onclick="setTimeframe('daily')" id="btn-tf-daily" class="px-3 py-1 rounded text-slate-400 hover:text-white font-medium">Daily</button>
+            <button onclick="setTimeframe('weekly')" id="btn-tf-weekly" class="px-3 py-1 rounded bg-teal-500/20 text-teal-300 font-semibold border border-teal-500/30">Weekly</button>
+            <button onclick="setTimeframe('monthly')" id="btn-tf-monthly" class="px-3 py-1 rounded text-slate-400 hover:text-white font-medium">Monthly</button>
+          </div>
+        </div>
+
+        <!-- 6 Outcome KPI Cards -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3.5">
+          <div class="glass-card rounded-xl p-4">
+            <p class="text-[11px] text-slate-400 mb-1">CSAT Score</p>
+            <p class="text-2xl font-bold font-mono text-teal-300" id="kpi-csat">4.18</p>
+            <p class="text-[10px] text-emerald-400 mt-1 font-mono">↑ +0.8 pts post-rec</p>
+          </div>
+
+          <div class="glass-card rounded-xl p-4">
+            <p class="text-[11px] text-slate-400 mb-1">Resolution Rate</p>
+            <p class="text-2xl font-bold font-mono text-white" id="kpi-res-rate">88.5%</p>
+            <p class="text-[10px] text-emerald-400 mt-1 font-mono">↑ +24.1% efficiency</p>
+          </div>
+
+          <div class="glass-card rounded-xl p-4">
+            <p class="text-[11px] text-slate-400 mb-1">Avg Resolution Time</p>
+            <p class="text-2xl font-bold font-mono text-white" id="kpi-avg-time">18.2 hrs</p>
+            <p class="text-[10px] text-emerald-400 mt-1 font-mono">↓ -16.3 hrs faster</p>
+          </div>
+
+          <div class="glass-card rounded-xl p-4">
+            <p class="text-[11px] text-slate-400 mb-1">Repeat Complaint Rate</p>
+            <p class="text-2xl font-bold font-mono text-emerald-400" id="kpi-repeat-rate">4.6%</p>
+            <p class="text-[10px] text-emerald-400 mt-1 font-mono">↓ -9.6% reduction</p>
+          </div>
+
+          <div class="glass-card rounded-xl p-4">
+            <p class="text-[11px] text-slate-400 mb-1">Negative Feedback %</p>
+            <p class="text-2xl font-bold font-mono text-amber-300" id="kpi-neg-share">28.5%</p>
+            <p class="text-[10px] text-emerald-400 mt-1 font-mono">Down from 36.8%</p>
+          </div>
+
+          <div class="glass-card rounded-xl p-4">
+            <p class="text-[11px] text-slate-400 mb-1">Recovery Success</p>
+            <p class="text-2xl font-bold font-mono text-teal-300" id="kpi-recovery-success">91.4%</p>
+            <p class="text-[10px] text-emerald-400 mt-1 font-mono">Customer retention</p>
+          </div>
+        </div>
+
+        <!-- Before vs After Empirical Recovery Table -->
+        <div class="glass-card rounded-xl p-5">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h4 class="text-xs font-bold text-white uppercase tracking-wider">Before vs. After Intervention Performance</h4>
+              <p class="text-[11px] text-slate-400">Empirical measurement of operational baseline vs active post-recovery status</p>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-800">Measured Outcomes</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-navy-900/80 text-[11px] text-slate-400 uppercase tracking-wider border-b border-navy-800">
+                <tr>
+                  <th class="py-2.5 px-4">Performance Metric</th>
+                  <th class="py-2.5 px-4">Baseline (Pre-Intervention)</th>
+                  <th class="py-2.5 px-4">Current (Post-Intervention)</th>
+                  <th class="py-2.5 px-4">Measured Variance</th>
+                  <th class="py-2.5 px-4 text-right">Status</th>
+                </tr>
+              </thead>
+              <tbody id="kpi-before-after-table" class="divide-y divide-navy-800/60 font-mono">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- 8. REPORTS PAGE -->
+      <!-- ======================================================== -->
+      <section id="page-reports" class="page-content hidden space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 no-print">
+          <div>
+            <h3 class="text-sm font-semibold text-slate-200">Executive Recovery Briefings & Exports</h3>
+            <p class="text-xs text-slate-400">Formal business reports with complete evidence trails and intervention status.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <!-- Export CSV -->
+            <a href="/api/reports/export-csv" download class="px-3.5 py-2 rounded-lg bg-navy-800 hover:bg-navy-700 text-teal-300 border border-teal-500/30 text-xs font-semibold flex items-center gap-2 transition">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Export Report CSV
+            </a>
+            <!-- Print PDF -->
+            <button onclick="window.print()" class="px-3.5 py-2 rounded-lg bg-teal-500 hover:bg-teal-400 text-navy-950 text-xs font-bold flex items-center gap-2 transition shadow-lg shadow-teal-500/20">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+              Print / Save PDF
+            </button>
+          </div>
+        </div>
+
+        <!-- Printable Executive Report Document Card -->
+        <div class="glass-card rounded-xl p-8 space-y-6 border border-navy-800" id="printable-report">
+          <div class="flex items-center justify-between border-b border-navy-800 pb-5">
+            <div>
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold">CX</div>
+                <h2 class="text-lg font-bold text-white tracking-tight">CX Guardian — Executive Recovery Briefing</h2>
+              </div>
+              <p class="text-xs text-slate-400 mt-1">Autonomous Customer Experience Recovery Platform • Official Audit</p>
+            </div>
+            <div class="text-right text-xs">
+              <p class="text-slate-400">Generated on:</p>
+              <p class="font-mono text-white" id="report-timestamp">2026-10-31</p>
+            </div>
+          </div>
+
+          <!-- Executive Summary Callout -->
+          <div class="p-4 rounded-lg bg-navy-900 border-l-4 border-teal-400 text-xs space-y-2">
+            <h4 class="font-bold text-teal-300 uppercase tracking-wide">1. Executive Summary</h4>
+            <p class="text-slate-200 leading-relaxed" id="report-exec-summary">
+              During the analyzed operational period, CX Guardian processed 520+ cross-channel customer signals. Machine learning clustering and statistical velocity modeling identified 4 high-friction operational clusters with primary concentration around ExpressLogistics delivery transit latencies in Chennai Metro (+45.2% surge) and payment gateway callback timeouts. Recovery SOPs have been formulated and routed to respective operational department leads.
+            </p>
+          </div>
+
+          <!-- Priority Ranking Matrix -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold text-white uppercase tracking-wider">2. Prioritized Issue Findings & Hypotheses</h4>
+            <div id="report-issues-table" class="space-y-3">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Recommended & Approved Interventions -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold text-white uppercase tracking-wider">3. Recovery Actions & Manager Approvals</h4>
+            <div id="report-interventions-table" class="space-y-3">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Measured Outcomes -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold text-white uppercase tracking-wider">4. Measured Business Impact & Retention</h4>
+            <div class="grid grid-cols-3 gap-3 text-xs font-mono">
+              <div class="p-3 rounded bg-navy-900 border border-navy-800">
+                <span class="text-slate-400 block text-[10px]">CSAT Recovery</span>
+                <span class="text-lg font-bold text-teal-300">4.18 / 5.0 (+0.8 pts)</span>
+              </div>
+              <div class="p-3 rounded bg-navy-900 border border-navy-800">
+                <span class="text-slate-400 block text-[10px]">Resolution Turnaround</span>
+                <span class="text-lg font-bold text-white">18.2 hrs (-16.3 hrs)</span>
+              </div>
+              <div class="p-3 rounded bg-navy-900 border border-navy-800">
+                <span class="text-slate-400 block text-[10px]">Retention Success</span>
+                <span class="text-lg font-bold text-emerald-400">91.4% Retained</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- 9. SETTINGS PAGE -->
+      <!-- ======================================================== -->
+      <section id="page-settings" class="page-content hidden space-y-6">
+        <div>
+          <h3 class="text-sm font-semibold text-slate-200">Platform Settings & AI Configuration</h3>
+          <p class="text-xs text-slate-400">Manage Gemini API reasoning engine, priority scoring weights, and database records.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Gemini API Configuration -->
+          <div class="glass-card rounded-xl p-5 space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold">AI</div>
+              <div>
+                <h4 class="text-xs font-bold text-white uppercase tracking-wider">Google Gemini API Configuration</h4>
+                <p class="text-[11px] text-slate-400">Power natural language reasoning & recovery generation</p>
+              </div>
+            </div>
+
+            <div class="space-y-3 text-xs">
+              <div>
+                <label class="block text-[11px] font-medium text-slate-300 mb-1">Gemini API Key</label>
+                <div class="relative">
+                  <input type="password" id="setting-gemini-key" placeholder="Enter AIzaSy... API Key" class="w-full bg-navy-950 border border-navy-800 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-teal-500">
+                  <button type="button" onclick="toggleApiKeyVisibility()" class="absolute right-3 top-2.5 text-slate-400 hover:text-white text-[11px]">Show</button>
+                </div>
+                <p class="text-[10px] text-slate-400 mt-1">If blank, the platform utilizes its deterministic NLP and statistical clustering fallback engine.</p>
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-medium text-slate-300 mb-1">Model Selection</label>
+                <select id="setting-gemini-model" class="w-full bg-navy-950 border border-navy-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-teal-500">
+                  <option value="gemini-2.5-flash">Gemini 2.5 Flash (Recommended - Ultra Fast)</option>
+                  <option value="gemini-1.5-pro">Gemini 1.5 Pro (Deep Multimodal Reasoning)</option>
+                  <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
+                </select>
+              </div>
+
+              <button onclick="saveApiSettings()" class="px-4 py-2 rounded-lg bg-teal-500 hover:bg-teal-400 text-navy-950 text-xs font-bold transition">
+                Save AI Settings
+              </button>
+            </div>
+          </div>
+
+          <!-- Priority Scoring Algorithm Weight Tuner -->
+          <div class="glass-card rounded-xl p-5 space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="text-xs font-bold text-white uppercase tracking-wider">Priority Scoring Algorithm Weights</h4>
+                <p class="text-[11px] text-slate-400">Dynamic 0-100 normalization formula weights</p>
+              </div>
+              <span class="text-xs font-mono font-bold text-teal-300" id="total-weight-display">Total: 100%</span>
+            </div>
+
+            <div class="space-y-3 text-xs">
+              <div>
+                <div class="flex justify-between text-[11px] mb-1">
+                  <span class="text-slate-300">Issue Severity Weight</span>
+                  <span class="font-mono text-teal-300" id="val-weight-sev">30%</span>
+                </div>
+                <input type="range" id="slider-weight-sev" min="10" max="60" value="30" oninput="updateWeights()" class="w-full accent-teal-400">
+              </div>
+
+              <div>
+                <div class="flex justify-between text-[11px] mb-1">
+                  <span class="text-slate-300">Complaint Frequency Weight</span>
+                  <span class="font-mono text-teal-300" id="val-weight-freq">25%</span>
+                </div>
+                <input type="range" id="slider-weight-freq" min="10" max="60" value="25" oninput="updateWeights()" class="w-full accent-teal-400">
+              </div>
+
+              <div>
+                <div class="flex justify-between text-[11px] mb-1">
+                  <span class="text-slate-300">Customer Impact Weight</span>
+                  <span class="font-mono text-teal-300" id="val-weight-impact">25%</span>
+                </div>
+                <input type="range" id="slider-weight-impact" min="10" max="60" value="25" oninput="updateWeights()" class="w-full accent-teal-400">
+              </div>
+
+              <div>
+                <div class="flex justify-between text-[11px] mb-1">
+                  <span class="text-slate-300">Complaint Growth Surge Weight</span>
+                  <span class="font-mono text-teal-300" id="val-weight-growth">20%</span>
+                </div>
+                <input type="range" id="slider-weight-growth" min="5" max="50" value="20" oninput="updateWeights()" class="w-full accent-teal-400">
+              </div>
+
+              <!-- Mathematical Formula Preview -->
+              <div class="p-2.5 rounded bg-navy-950 font-mono text-[10px] text-slate-300 border border-navy-800" id="formula-preview">
+                Score = (0.30 × Severity) + (0.25 × Frequency) + (0.25 × Impact) + (0.20 × Growth)
+              </div>
+
+              <button onclick="saveWeightsSettings()" class="px-4 py-2 rounded-lg bg-teal-500 hover:bg-teal-400 text-navy-950 text-xs font-bold transition">
+                Apply & Recalculate Priorities
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Database Collections & Record Controls -->
+        <div class="glass-card rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h4 class="text-xs font-bold text-white uppercase tracking-wider">Database Collections & Storage</h4>
+              <p class="text-[11px] text-slate-400">Persistent Firestore-compatible JSON documents</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="seedDemoDataset()" class="px-3 py-1.5 rounded-lg bg-teal-500/20 hover:bg-teal-500/30 text-teal-300 border border-teal-500/40 text-xs font-semibold transition">
+                Re-seed 520+ Demo Records
+              </button>
+              <button onclick="confirmResetDatabase()" class="px-3 py-1.5 rounded-lg bg-rose-950/60 hover:bg-rose-900 text-rose-300 border border-rose-800 text-xs font-semibold transition">
+                Reset Database
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 text-xs" id="collection-stats-grid">
+            <!-- Dynamically populated collection counts -->
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MODALS -->
+  <!-- ============================================================ -->
+
+  <!-- 1. AI Analysis In-Progress Modal -->
+  <div id="modal-analysis" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-navy-900 border border-teal-500/40 rounded-2xl p-6 max-w-md w-full shadow-2xl teal-glow space-y-5 text-center">
+      <div class="w-16 h-16 rounded-2xl bg-teal-500/20 border border-teal-400/40 flex items-center justify-center text-teal-300 mx-auto animate-pulse">
+        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+      </div>
+      <div>
+        <h3 class="text-base font-bold text-white tracking-tight">Autonomous CX Recovery Analysis</h3>
+        <p class="text-xs text-slate-400 mt-1">Executing end-to-end evidence-to-action reasoning engine</p>
+      </div>
+
+      <!-- Step Checklist Animation -->
+      <div class="space-y-2 text-left text-xs bg-navy-950/80 p-3.5 rounded-xl border border-navy-800 font-mono">
+        <div id="step-ai-1" class="flex items-center gap-2 text-teal-300"><span class="w-2 h-2 rounded-full bg-teal-400 animate-ping"></span> 1. Ingesting customer feedback...</div>
+        <div id="step-ai-2" class="flex items-center gap-2 text-slate-500"><span class="w-2 h-2 rounded-full bg-slate-600"></span> 2. DistilBERT sentiment scoring...</div>
+        <div id="step-ai-3" class="flex items-center gap-2 text-slate-500"><span class="w-2 h-2 rounded-full bg-slate-600"></span> 3. NLP complaint categorization...</div>
+        <div id="step-ai-4" class="flex items-center gap-2 text-slate-500"><span class="w-2 h-2 rounded-full bg-slate-600"></span> 4. TF-IDF & KMeans issue clustering...</div>
+        <div id="step-ai-5" class="flex items-center gap-2 text-slate-500"><span class="w-2 h-2 rounded-full bg-slate-600"></span> 5. Operational telemetry root cause...</div>
+        <div id="step-ai-6" class="flex items-center gap-2 text-slate-500"><span class="w-2 h-2 rounded-full bg-slate-600"></span> 6. Generating recovery SOP actions...</div>
+      </div>
+      <p class="text-[11px] text-teal-400/80 animate-pulse font-medium">Please wait a few seconds...</p>
+    </div>
+  </div>
+
+  <!-- 2. Add Manual Feedback Modal -->
+  <div id="modal-add-feedback" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-navy-900 border border-navy-700 rounded-2xl p-6 max-w-lg w-full shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b border-navy-800 pb-3">
+        <h3 class="text-sm font-bold text-white">Add Customer Feedback Record</h3>
+        <button onclick="closeModal('modal-add-feedback')" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+
+      <form onsubmit="submitManualFeedback(event)" class="space-y-3 text-xs">
+        <div>
+          <label class="block text-slate-300 font-medium mb-1">Feedback Content *</label>
+          <textarea id="mf-text" rows="3" required placeholder="Enter customer complaint or review text..." class="w-full bg-navy-950 border border-navy-800 rounded-lg p-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-teal-500"></textarea>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Rating (1 to 5 Stars)</label>
+            <select id="mf-rating" class="w-full bg-navy-950 border border-navy-800 rounded-lg p-2 text-white">
+              <option value="1">1 Star (Critical Complaint)</option>
+              <option value="2">2 Stars (Poor Experience)</option>
+              <option value="3">3 Stars (Neutral / Average)</option>
+              <option value="4">4 Stars (Good)</option>
+              <option value="5">5 Stars (Excellent)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Product</label>
+            <select id="mf-product" class="w-full bg-navy-950 border border-navy-800 rounded-lg p-2 text-white">
+              <option value="SmartHome Hub Pro">SmartHome Hub Pro</option>
+              <option value="Smart Air Purifier X1">Smart Air Purifier X1</option>
+              <option value="UltraSound ANC Headphones">UltraSound ANC Headphones</option>
+              <option value="4K Security Camera 360">4K Security Camera 360</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Location / City</label>
+            <input type="text" id="mf-location" value="Chennai" class="w-full bg-navy-950 border border-navy-800 rounded-lg p-2 text-white">
+          </div>
+
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Channel Source</label>
+            <select id="mf-source" class="w-full bg-navy-950 border border-navy-800 rounded-lg p-2 text-white">
+              <option value="Customer Reviews">Customer Reviews</option>
+              <option value="Customer Surveys">Customer Surveys</option>
+              <option value="Support Tickets">Support Tickets</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Contact Center">Contact Center</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Delivery Partner</label>
+            <input type="text" id="mf-carrier" value="ExpressLogistics" class="w-full bg-navy-950 border border-navy-800 rounded-lg p-2 text-white">
+          </div>
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Order Status</label>
+            <select id="mf-order-status" class="w-full bg-navy-950 border border-navy-800 rounded-lg p-2 text-white">
+              <option value="In Transit - Delayed">In Transit - Delayed</option>
+              <option value="Delivered">Delivered</option>
+              <option value="Failed">Failed</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex justify-end gap-2 pt-2 border-t border-navy-800">
+          <button type="button" onclick="closeModal('modal-add-feedback')" class="px-4 py-2 rounded-lg bg-navy-800 text-slate-300 hover:text-white">Cancel</button>
+          <button type="submit" class="px-4 py-2 rounded-lg bg-teal-500 hover:bg-teal-400 text-navy-950 font-bold">Save Feedback</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Import CSV Modal -->
+  <div id="modal-csv-upload" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-navy-900 border border-navy-700 rounded-2xl p-6 max-w-lg w-full shadow-2xl space-y-4 text-xs">
+      <div class="flex items-center justify-between border-b border-navy-800 pb-3">
+        <h3 class="text-sm font-bold text-white">Upload Feedback CSV</h3>
+        <button onclick="closeModal('modal-csv-upload')" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+
+      <div class="border-2 border-dashed border-navy-700 rounded-xl p-6 text-center space-y-2 hover:border-teal-500 transition cursor-pointer" onclick="document.getElementById('csv-file-input').click()">
+        <svg class="w-8 h-8 text-teal-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+        <p class="text-white font-medium">Click to select a CSV file</p>
+        <p class="text-[10px] text-slate-400">Must include header: feedback_text (required), rating, product, location...</p>
+        <input type="file" id="csv-file-input" accept=".csv" class="hidden" onchange="handleCsvFileSelected(event)">
+      </div>
+
+      <div id="csv-preview-box" class="hidden bg-navy-950 p-3 rounded-lg border border-navy-800 space-y-1">
+        <p class="font-bold text-teal-300" id="csv-file-name">filename.csv</p>
+        <p class="text-[11px] text-slate-300" id="csv-file-stats">Ready to import</p>
+      </div>
+
+      <div class="flex justify-between items-center pt-2 border-t border-navy-800">
+        <a href="/api/feedback/sample-csv" download class="text-teal-400 hover:underline">Download Sample CSV</a>
+        <div class="flex gap-2">
+          <button type="button" onclick="closeModal('modal-csv-upload')" class="px-4 py-2 rounded-lg bg-navy-800 text-slate-300 hover:text-white">Cancel</button>
+          <button type="button" onclick="uploadCsvFile()" id="btn-submit-csv" disabled class="px-4 py-2 rounded-lg bg-teal-500 hover:bg-teal-400 text-navy-950 font-bold disabled:opacity-40">Import Records</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Individual Feedback Detail Modal -->
+  <div id="modal-feedback-detail" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-navy-900 border border-navy-700 rounded-2xl p-6 max-w-lg w-full shadow-2xl space-y-4 text-xs">
+      <div class="flex items-center justify-between border-b border-navy-800 pb-3">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <span id="dtl-fb-id" class="font-mono text-teal-300">FB-00000</span>
+          <span>Details</span>
+        </h3>
+        <button onclick="closeModal('modal-feedback-detail')" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+
+      <div class="space-y-3" id="feedback-detail-body">
+        <!-- Dynamically injected feedback data -->
+      </div>
+
+      <div class="flex justify-end pt-2 border-t border-navy-800">
+        <button onclick="closeModal('modal-feedback-detail')" class="px-4 py-2 rounded-lg bg-navy-800 text-slate-300 hover:text-white">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-navy-850 border border-teal-500/50 text-white text-xs px-4 py-3 rounded-xl shadow-2xl teal-glow-sm transform translate-y-24 opacity-0 transition-all duration-300 flex items-center gap-3">
+    <div class="w-2 h-2 rounded-full bg-teal-400"></div>
+    <span id="toast-message">Notification</span>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- APPLICATION LOGIC & SPA SCRIPT -->
+  <!-- ============================================================ -->
+  <script>
+    // State Management
+    const state = {
+      currentPage: 'overview',
+      feedbackPage: 1,
+      feedbackLimit: 25,
+      searchDebounceTimer: null,
+      selectedCsvContent: null,
+      overviewStats: null,
+      scoringWeights: { severity: 0.30, frequency: 0.25, impact: 0.25, growth: 0.20 }
+    };
+
+    // Navigation Switcher
+    function navigate(pageId) {
+      state.currentPage = pageId;
+
+      // Update Nav buttons styling
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        if (btn.getAttribute('data-page') === pageId) {
+          btn.className = "nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold transition text-teal-300 bg-teal-500/15 border-l-4 border-teal-400";
+        } else {
+          btn.className = "nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-navy-800/50 transition";
+        }
+      });
+
+      // Show target page, hide others
+      document.querySelectorAll('.page-content').forEach(sec => sec.classList.add('hidden'));
+      const activeSec = document.getElementById(`page-${pageId}`);
+      if (activeSec) activeSec.classList.remove('hidden');
+
+      // Update breadcrumb and header title
+      const pageNames = {
+        'overview': 'Overview',
+        'feedback': 'Feedback',
+        'issues': 'Detected Issues',
+        'root-cause': 'Root Cause Analysis',
+        'segments': 'Customer Segments',
+        'interventions': 'Interventions',
+        'kpis': 'KPI Monitoring',
+        'reports': 'Reports',
+        'settings': 'Settings'
+      };
+      const title = pageNames[pageId] || 'Overview';
+      document.getElementById('page-breadcrumb').textContent = `Customer Experience / ${title}`;
+      document.getElementById('page-title').textContent = title;
+
+      // Lazy load page specific data
+      if (pageId === 'overview') loadOverview();
+      else if (pageId === 'feedback') loadFeedback();
+      else if (pageId === 'issues') loadDetectedIssues();
+      else if (pageId === 'root-cause') loadRootCauses();
+      else if (pageId === 'segments') loadCustomerSegments();
+      else if (pageId === 'interventions') loadInterventions();
+      else if (pageId === 'kpis') loadKPIs();
+      else if (pageId === 'reports') loadReports();
+      else if (pageId === 'settings') loadSettings();
+    }
+
+    // Toast Utility
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const text = document.getElementById('toast-message');
+      text.textContent = msg;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 3500);
+    }
+
+    // Modal Utilities
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+    // Refresh Data Handler
+    function refreshData() {
+      const btn = document.getElementById('btn-refresh');
+      btn.classList.add('animate-spin');
+      navigate(state.currentPage);
+      setTimeout(() => btn.classList.remove('animate-spin'), 600);
+      showToast('Data refreshed from live database');
+    }
+
+    // -------------------------------------------------------------
+    // 1. OVERVIEW DATA LOADER
+    // -------------------------------------------------------------
+    async function loadOverview() {
+      try {
+        const res = await fetch('/api/stats');
+        const data = await res.json();
+        state.overviewStats = data.stats;
+
+        // Populate metric cards
+        document.getElementById('stat-total-feedback').textContent = data.stats.totalFeedback.toLocaleString();
+        document.getElementById('stat-negative-feedback').textContent = data.stats.negativeFeedback.toLocaleString();
+        document.getElementById('stat-detected-issues').textContent = data.stats.detectedIssuesCount;
+        document.getElementById('stat-critical-issues').textContent = data.stats.criticalIssuesCount;
+        document.getElementById('stat-affected-customers').textContent = data.stats.affectedCustomersCount;
+        document.getElementById('stat-recovery-actions').textContent = data.stats.recoveryActionsCount;
+        document.getElementById('stat-resolved-issues').textContent = data.stats.resolvedIssuesCount;
+
+        // Nav Badges
+        document.getElementById('nav-feedback-badge').textContent = data.stats.totalFeedback;
+        document.getElementById('nav-issues-badge').textContent = data.stats.detectedIssuesCount;
+
+        // Sentiment breakdown
+        const total = (data.sentimentDistribution.Positive || 0) + (data.sentimentDistribution.Negative || 0) + (data.sentimentDistribution.Neutral || 0);
+        if (total > 0) {
+          const posPct = Math.round((data.sentimentDistribution.Positive / total) * 100);
+          const negPct = Math.round((data.sentimentDistribution.Negative / total) * 100);
+          const neuPct = 100 - posPct - negPct;
+
+          document.getElementById('donut-total').textContent = total;
+          document.getElementById('sent-pos-val').textContent = `${posPct}%`;
+          document.getElementById('sent-neg-val').textContent = `${negPct}%`;
+          document.getElementById('sent-neu-val').textContent = `${neuPct}%`;
+
+          // Adjust SVG stroke dash arrays
+          document.getElementById('donut-positive').setAttribute('stroke-dasharray', `${posPct}, 100`);
+          document.getElementById('donut-negative').setAttribute('stroke-dasharray', `${negPct}, 100`);
+          document.getElementById('donut-negative').setAttribute('stroke-dashoffset', `-${posPct}`);
+          document.getElementById('donut-neutral').setAttribute('stroke-dasharray', `${neuPct}, 100`);
+          document.getElementById('donut-neutral').setAttribute('stroke-dashoffset', `-${posPct + negPct}`);
+        }
+
+        // Category breakdown bars
+        const catContainer = document.getElementById('chart-categories');
+        catContainer.innerHTML = '';
+        const maxCat = Math.max(...data.categoryDistribution.map(c => c.count), 1);
+        data.categoryDistribution.forEach(cat => {
+          const pct = Math.round((cat.count / maxCat) * 100);
+          const bar = document.createElement('div');
+          bar.className = 'space-y-1';
+          bar.innerHTML = `
+            <div class="flex justify-between text-xs">
+              <span class="text-slate-300 font-medium">${cat.name}</span>
+              <span class="font-mono text-teal-300 font-semibold">${cat.count}</span>
+            </div>
+            <div class="w-full bg-navy-950 rounded-full h-2 overflow-hidden border border-navy-800">
+              <div class="bg-gradient-to-r from-teal-500 to-teal-400 h-2 rounded-full transition-all duration-500" style="width: ${pct}%"></div>
+            </div>
+          `;
+          catContainer.appendChild(bar);
+        });
+
+        // Overview Latest Issues List
+        const issuesList = document.getElementById('overview-issues-list');
+        issuesList.innerHTML = '';
+        if (data.issues.length === 0) {
+          issuesList.innerHTML = `<div class="p-4 text-center text-xs text-slate-400">No issues analyzed yet. Run analysis to detect clusters.</div>`;
+        } else {
+          data.issues.forEach(iss => {
+            const sevColor = iss.severity === 'Critical' ? 'bg-rose-950 text-rose-300 border-rose-800' :
+              iss.severity === 'High' ? 'bg-orange-950 text-orange-300 border-orange-800' :
+              iss.severity === 'Medium' ? 'bg-amber-950 text-amber-300 border-amber-800' : 'bg-blue-950 text-blue-300 border-blue-800';
+
+            const item = document.createElement('div');
+            item.className = 'p-3 rounded-lg bg-navy-950/70 border border-navy-800 flex items-center justify-between hover:border-teal-500/40 transition cursor-pointer';
+            item.onclick = () => navigate('issues');
+            item.innerHTML = `
+              <div class="space-y-0.5">
+                <div class="flex items-center gap-2">
+                  <span class="px-1.5 py-0.5 rounded text-[10px] font-bold border ${sevColor}">${iss.severity}</span>
+                  <span class="text-xs font-semibold text-white">${iss.name}</span>
+                </div>
+                <p class="text-[11px] text-slate-400">${iss.complaintCount} complaints • ${iss.affectedCustomers} affected users • <span class="text-teal-400 font-mono">${iss.frequencyTrend}</span></p>
+              </div>
+              <div class="text-right">
+                <span class="text-xs font-bold font-mono text-teal-300">${iss.priorityScore}/100</span>
+                <span class="block text-[9px] text-slate-400 uppercase">Priority</span>
+              </div>
+            `;
+            issuesList.appendChild(item);
+          });
+        }
+
+        // Autonomous Workflow Steps
+        const wfContainer = document.getElementById('autonomous-workflow-steps');
+        wfContainer.innerHTML = '';
+        data.autonomousChain.forEach(st => {
+          const stepDiv = document.createElement('div');
+          stepDiv.className = 'flex items-start gap-3 p-2 rounded-lg bg-navy-950/40 border border-navy-800/80';
+          stepDiv.innerHTML = `
+            <div class="w-6 h-6 rounded-full bg-teal-500/20 text-teal-300 font-mono text-[11px] font-bold flex items-center justify-center shrink-0 border border-teal-500/30">
+              ${st.step}
+            </div>
+            <div class="flex-1 text-xs">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold text-white">${st.name}</span>
+                <span class="text-[10px] font-mono text-teal-400">${st.status}</span>
+              </div>
+              <p class="text-[11px] text-slate-400">${st.detail}</p>
+            </div>
+          `;
+          wfContainer.appendChild(stepDiv);
+        });
+
+      } catch (err) {
+        console.error('Error loading overview:', err);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 2. FEEDBACK DATA LOADER
+    // -------------------------------------------------------------
+    function debounceFeedbackSearch() {
+      clearTimeout(state.searchDebounceTimer);
+      state.searchDebounceTimer = setTimeout(() => {
+        loadFeedback(1);
+      }, 300);
+    }
+
+    async function loadFeedback(page = state.feedbackPage) {
+      state.feedbackPage = page;
+      const search = document.getElementById('feedback-search').value;
+      const sentiment = document.getElementById('filter-sentiment').value;
+      const category = document.getElementById('filter-category').value;
+      const location = document.getElementById('filter-location').value;
+      const product = document.getElementById('filter-product').value;
+      const source = document.getElementById('filter-source').value;
+
+      const params = new URLSearchParams({
+        page,
+        limit: state.feedbackLimit,
+        search,
+        sentiment,
+        category,
+        location,
+        product,
+        source
+      });
+
+      try {
+        const res = await fetch(`/api/feedback?${params.toString()}`);
+        const data = await res.json();
+
+        // Update pagination numbers
+        const start = data.total === 0 ? 0 : (page - 1) * state.feedbackLimit + 1;
+        const end = Math.min(page * state.feedbackLimit, data.total);
+        document.getElementById('pag-start').textContent = start;
+        document.getElementById('pag-end').textContent = end;
+        document.getElementById('pag-total').textContent = data.total;
+        document.getElementById('pag-current-page').textContent = `Page ${page} of ${Math.max(1, data.totalPages)}`;
+
+        document.getElementById('btn-prev-page').disabled = page <= 1;
+        document.getElementById('btn-next-page').disabled = page >= data.totalPages;
+
+        // Render Table Rows
+        const tbody = document.getElementById('feedback-table-body');
+        tbody.innerHTML = '';
+
+        if (data.records.length === 0) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="6" class="py-12 text-center text-slate-400">
+                <div class="w-12 h-12 rounded-full bg-navy-900 border border-navy-800 flex items-center justify-center text-slate-500 mx-auto mb-2">
+                  <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/></svg>
+                </div>
+                <p class="font-medium text-white">No feedback records found</p>
+                <p class="text-xs text-slate-500 mt-0.5">Try relaxing your filters or import demo records.</p>
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        data.records.forEach(r => {
+          const tr = document.createElement('tr');
+          tr.className = 'hover:bg-navy-850/60 transition group';
+
+          // Sentiment pill
+          const sent = r.raw_sentiment || r.sentiment || 'Neutral';
+          const sentColor = sent === 'Negative' ? 'bg-rose-950/80 text-rose-300 border-rose-800' :
+            sent === 'Positive' ? 'bg-emerald-950/80 text-emerald-300 border-emerald-800' : 'bg-amber-950/80 text-amber-300 border-amber-800';
+
+          const stars = '★'.repeat(r.rating) + '☆'.repeat(Math.max(0, 5 - r.rating));
+
+          tr.innerHTML = `
+            <td class="py-3 px-4 whitespace-nowrap">
+              <span class="font-mono text-teal-400 font-semibold block">${r.feedback_id}</span>
+              <span class="text-[10px] text-slate-400">${r.date || '2026-10-31'}</span>
+            </td>
+            <td class="py-3 px-4 whitespace-nowrap">
+              <span class="font-medium text-white block">${r.customer_id}</span>
+              <span class="text-[10px] text-slate-400">${r.source} • <span class="text-teal-400">${r.customer_tier || 'Regular'}</span></span>
+            </td>
+            <td class="py-3 px-4 whitespace-nowrap">
+              <span class="font-medium text-slate-200 block">${r.location || 'Chennai'}</span>
+              <span class="text-[10px] text-slate-400">${r.product}</span>
+            </td>
+            <td class="py-3 px-4">
+              <p class="text-slate-300 line-clamp-2 leading-relaxed" title="${r.feedback_text}">${r.feedback_text}</p>
+            </td>
+            <td class="py-3 px-4 whitespace-nowrap">
+              <div class="flex items-center gap-1.5 mb-1">
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${sentColor}">${sent}</span>
+                <span class="text-[10px] text-amber-400 font-mono">${stars}</span>
+              </div>
+              <span class="text-[10px] text-slate-400 block">${r.assigned_category || r.category || 'Quality'}</span>
+            </td>
+            <td class="py-3 px-4 whitespace-nowrap text-right">
+              <div class="flex items-center justify-end gap-1.5 opacity-80 group-hover:opacity-100">
+                <button onclick='viewFeedbackDetail(${JSON.stringify(r)})' title="View Full Details" class="p-1 rounded hover:bg-navy-800 text-teal-400">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                </button>
+                <button onclick="deleteFeedbackRecord('${r.feedback_id}')" title="Delete Record" class="p-1 rounded hover:bg-rose-950 text-rose-400">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                </button>
+              </div>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+      } catch (err) {
+        console.error('Error loading feedback:', err);
+      }
+    }
+
+    function prevFeedbackPage() {
+      if (state.feedbackPage > 1) loadFeedback(state.feedbackPage - 1);
+    }
+    function nextFeedbackPage() {
+      loadFeedback(state.feedbackPage + 1);
+    }
+
+    // View Individual Feedback Details Modal
+    function viewFeedbackDetail(r) {
+      document.getElementById('dtl-fb-id').textContent = r.feedback_id;
+      const body = document.getElementById('feedback-detail-body');
+      body.innerHTML = `
+        <div class="p-3 bg-navy-950 rounded-lg border border-navy-800 space-y-1">
+          <span class="text-[10px] uppercase font-bold text-slate-400">Feedback Quote</span>
+          <p class="text-sm text-white font-medium italic">"${r.feedback_text}"</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <div class="p-2.5 rounded bg-navy-950 border border-navy-800">
+            <span class="text-[10px] text-slate-400 block">Customer ID</span>
+            <span class="font-mono text-teal-300 font-bold">${r.customer_id} (${r.customer_tier || 'Regular'})</span>
+          </div>
+          <div class="p-2.5 rounded bg-navy-950 border border-navy-800">
+            <span class="text-[10px] text-slate-400 block">Product</span>
+            <span class="font-semibold text-white">${r.product}</span>
+          </div>
+          <div class="p-2.5 rounded bg-navy-950 border border-navy-800">
+            <span class="text-[10px] text-slate-400 block">Location / Hub</span>
+            <span class="font-semibold text-white">${r.location || 'Chennai'}</span>
+          </div>
+          <div class="p-2.5 rounded bg-navy-950 border border-navy-800">
+            <span class="text-[10px] text-slate-400 block">Rating</span>
+            <span class="font-mono text-amber-400">${r.rating} / 5 Stars</span>
+          </div>
+          <div class="p-2.5 rounded bg-navy-950 border border-navy-800">
+            <span class="text-[10px] text-slate-400 block">Order ID</span>
+            <span class="font-mono text-slate-300">${r.order_id || 'N/A'}</span>
+          </div>
+          <div class="p-2.5 rounded bg-navy-950 border border-navy-800">
+            <span class="text-[10px] text-slate-400 block">Transaction ID</span>
+            <span class="font-mono text-slate-300">${r.transaction_id || 'N/A'}</span>
+          </div>
+          <div class="p-2.5 rounded bg-navy-950 border border-navy-800">
+            <span class="text-[10px] text-slate-400 block">Delivery Partner</span>
+            <span class="font-semibold text-teal-300">${r.delivery_partner || 'ExpressLogistics'}</span>
+          </div>
+          <div class="p-2.5 rounded bg-navy-950 border border-navy-800">
+            <span class="text-[10px] text-slate-400 block">Order Status</span>
+            <span class="font-semibold text-white">${r.order_status || 'Delivered'}</span>
+          </div>
+        </div>
+
+        <div class="p-3 rounded bg-navy-950 border border-teal-500/30 text-xs">
+          <span class="text-[10px] uppercase font-bold text-teal-400 block mb-1">AI Classification Insight</span>
+          <p class="text-slate-300">Classified as <strong class="text-white">${r.assigned_category || r.category || 'Quality'}</strong> with <strong class="text-white">${r.raw_sentiment || r.sentiment}</strong> sentiment (confidence: ${(r.sentiment_confidence || 0.88) * 100}%).</p>
+        </div>
+      `;
+      openModal('modal-feedback-detail');
+    }
+
+    // Delete Feedback Record
+    async function deleteFeedbackRecord(id) {
+      if (!confirm(`Are you sure you want to delete feedback record ${id}?`)) return;
+      try {
+        const res = await fetch(`/api/feedback/${id}`, { method: 'DELETE' });
+        if (res.ok) {
+          showToast(`Deleted ${id}`);
+          loadFeedback();
+        } else {
+          showToast(`Failed to delete ${id}`);
+        }
+      } catch (err) {
+        showToast('Error deleting record');
+      }
+    }
+
+    // Manual Feedback Submission
+    function openAddFeedbackModal() { openModal('modal-add-feedback'); }
+    async function submitManualFeedback(e) {
+      e.preventDefault();
+      const payload = {
+        feedback_text: document.getElementById('mf-text').value,
+        rating: document.getElementById('mf-rating').value,
+        product: document.getElementById('mf-product').value,
+        location: document.getElementById('mf-location').value,
+        source: document.getElementById('mf-source').value,
+        delivery_partner: document.getElementById('mf-carrier').value,
+        order_status: document.getElementById('mf-order-status').value
+      };
+
+      try {
+        const res = await fetch('/api/feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (res.ok) {
+          closeModal('modal-add-feedback');
+          showToast(`Added feedback ${data.record.feedback_id}`);
+          loadFeedback(1);
+        } else {
+          showToast(data.error || 'Failed to add feedback');
+        }
+      } catch (err) {
+        showToast('Error adding feedback record');
+      }
+    }
+
+    // CSV File Selection & Upload
+    function openCsvModal() { openModal('modal-csv-upload'); }
+    function handleCsvFileSelected(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (evt) => {
+        state.selectedCsvContent = evt.target.result;
+        document.getElementById('csv-file-name').textContent = file.name;
+        document.getElementById('csv-file-stats').textContent = `${(file.size / 1024).toFixed(1)} KB • Ready for validation and ingestion`;
+        document.getElementById('csv-preview-box').classList.remove('hidden');
+        document.getElementById('btn-submit-csv').disabled = false;
+      };
+      reader.readAsText(file);
+    }
+
+    async function uploadCsvFile() {
+      if (!state.selectedCsvContent) return;
+      const btn = document.getElementById('btn-submit-csv');
+      btn.disabled = true;
+      btn.textContent = 'Validating...';
+
+      try {
+        const res = await fetch('/api/feedback/upload-csv', {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/csv' },
+          body: state.selectedCsvContent
+        });
+        const data = await res.json();
+        if (res.ok) {
+          closeModal('modal-csv-upload');
+          showToast(data.message || 'CSV imported successfully!');
+          loadFeedback(1);
+        } else {
+          alert(`Validation Error: ${data.error}`);
+        }
+      } catch (err) {
+        showToast('Error uploading CSV file');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Import Records';
+      }
+    }
+
+    // Seed Demo Dataset
+    async function seedDemoDataset() {
+      if (!confirm('Import 520+ realistic synthetic feedback records labeled [DEMO DATA]?')) return;
+      try {
+        const res = await fetch('/api/feedback/seed', { method: 'POST' });
+        const data = await res.json();
+        showToast(data.message);
+        navigate(state.currentPage);
+      } catch (err) {
+        showToast('Error seeding demo dataset');
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 3. DETECTED ISSUES LOADER
+    // -------------------------------------------------------------
+    async function loadDetectedIssues() {
+      const severity = document.getElementById('issue-filter-severity').value;
+      const sort = document.getElementById('issue-sort-by').value;
+
+      try {
+        const res = await fetch(`/api/issues?severity=${severity}&sort=${sort}`);
+        const data = await res.json();
+        const container = document.getElementById('detected-issues-container');
+        container.innerHTML = '';
+
+        if (data.issues.length === 0) {
+          container.innerHTML = `<div class="p-8 text-center text-slate-400 glass-card rounded-xl">No issues detected for the selected filter. Run CX analysis to generate clusters.</div>`;
+          return;
+        }
+
+        data.issues.forEach(iss => {
+          const sevColor = iss.severity === 'Critical' ? 'bg-rose-950 text-rose-300 border-rose-800' :
+            iss.severity === 'High' ? 'bg-orange-950 text-orange-300 border-orange-800' :
+            iss.severity === 'Medium' ? 'bg-amber-950 text-amber-300 border-amber-800' : 'bg-blue-950 text-blue-300 border-blue-800';
+
+          const card = document.createElement('div');
+          card.className = 'glass-card rounded-xl p-5 space-y-4';
+          card.innerHTML = `
+            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+              <div class="space-y-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${sevColor}">${iss.severity}</span>
+                  <span class="text-sm font-bold text-white tracking-tight">${iss.name}</span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-teal-500/10 text-teal-300 border border-teal-500/30">${iss.category}</span>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">${iss.description}</p>
+              </div>
+
+              <!-- Priority Meter -->
+              <div class="shrink-0 bg-navy-950 p-2.5 rounded-lg border border-navy-800 text-right min-w-[140px]">
+                <div class="flex items-center justify-between gap-2 mb-1">
+                  <span class="text-[10px] text-slate-400 uppercase font-bold">Priority Score</span>
+                  <span class="text-sm font-bold font-mono text-teal-300">${iss.priorityScore}/100</span>
+                </div>
+                <div class="w-full bg-navy-900 rounded-full h-1.5 overflow-hidden">
+                  <div class="bg-gradient-to-r from-teal-500 to-teal-400 h-1.5 rounded-full" style="width: ${iss.priorityScore}%"></div>
+                </div>
+                <span class="text-[9px] text-slate-500 block mt-1" title="${iss.priorityExplanation}">Hover for Formula</span>
+              </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-navy-800 text-xs">
+              <div>
+                <span class="text-[10px] text-slate-400 block">Complaints Count</span>
+                <span class="font-mono text-white font-bold">${iss.complaintCount}</span>
+              </div>
+              <div>
+                <span class="text-[10px] text-slate-400 block">Affected Customers</span>
+                <span class="font-mono text-white font-bold">${iss.affectedCustomers}</span>
+              </div>
+              <div>
+                <span class="text-[10px] text-slate-400 block">Frequency Surge</span>
+                <span class="font-mono text-rose-400 font-bold">${iss.frequencyTrend}</span>
+              </div>
+              <div>
+                <span class="text-[10px] text-slate-400 block">Status</span>
+                <span class="font-semibold text-teal-300">${iss.status}</span>
+              </div>
+            </div>
+
+            <!-- Expandable Evidence Drawer Toggle -->
+            <div class="pt-2 flex items-center justify-between text-xs">
+              <button onclick="toggleEvidenceDrawer('${iss.id}')" class="text-teal-400 hover:text-teal-300 font-semibold flex items-center gap-1 transition">
+                <span>View Supporting Evidence Records</span>
+                <svg class="w-4 h-4 transform transition-transform" id="arrow-${iss.id}" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+              <button onclick="navigate('root-cause')" class="px-3 py-1 rounded bg-teal-500/15 hover:bg-teal-500/30 text-teal-300 border border-teal-500/40 text-[11px] font-semibold transition">
+                Examine Root Cause →
+              </button>
+            </div>
+
+            <!-- Evidence Drawer Container -->
+            <div id="drawer-${iss.id}" class="hidden pt-3 border-t border-navy-800 space-y-2 text-xs">
+              <div class="p-3 bg-navy-950 rounded-lg border border-navy-800 space-y-2" id="drawer-content-${iss.id}">
+                <p class="text-slate-400">Loading supporting feedback signals...</p>
+              </div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      } catch (err) {
+        console.error('Error loading detected issues:', err);
+      }
+    }
+
+    async function toggleEvidenceDrawer(issueId) {
+      const drawer = document.getElementById(`drawer-${issueId}`);
+      const arrow = document.getElementById(`arrow-${issueId}`);
+      const isHidden = drawer.classList.contains('hidden');
+
+      if (isHidden) {
+        drawer.classList.remove('hidden');
+        arrow.classList.add('rotate-180');
+        // Fetch issue details with supporting records
+        try {
+          const res = await fetch(`/api/issues/${issueId}`);
+          const data = await res.json();
+          const content = document.getElementById(`drawer-content-${issueId}`);
+          content.innerHTML = `
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[11px] font-bold uppercase text-teal-400">Supporting Feedback Signals (${data.supportingFeedback.length} samples)</span>
+              <span class="text-[10px] font-mono text-slate-400">Raw Customer Quotes</span>
+            </div>
+            <div class="space-y-1.5 max-h-48 overflow-y-auto pr-1">
+              ${data.supportingFeedback.map(f => `
+                <div class="p-2 bg-navy-900 rounded border border-navy-800 text-[11px] flex items-start justify-between gap-2">
+                  <div class="space-y-0.5">
+                    <span class="font-mono text-teal-300 font-bold">${f.feedback_id} (${f.customer_id})</span>
+                    <p class="text-slate-200 italic">"${f.feedback_text}"</p>
+                  </div>
+                  <span class="text-[10px] text-slate-400 whitespace-nowrap">${f.location || ''} • ${f.delivery_partner || ''}</span>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        } catch (err) {
+          console.error(err);
+        }
+      } else {
+        drawer.classList.add('hidden');
+        arrow.classList.remove('rotate-180');
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 4. ROOT CAUSE ANALYSIS LOADER
+    // -------------------------------------------------------------
+    async function loadRootCauses() {
+      try {
+        const res = await fetch('/api/root-causes');
+        const data = await res.json();
+        const container = document.getElementById('root-cause-cards-container');
+        container.innerHTML = '';
+
+        if (data.rootCauses.length === 0) {
+          container.innerHTML = `<div class="p-8 text-center text-slate-400 glass-card rounded-xl">No root cause analyses recorded. Run CX analysis.</div>`;
+          return;
+        }
+
+        data.rootCauses.forEach(rc => {
+          const card = document.createElement('div');
+          card.className = 'glass-card rounded-xl p-6 space-y-5 border-l-4 border-l-teal-400';
+          card.innerHTML = `
+            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+              <div>
+                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-teal-400">${rc.issueId} • ${rc.category}</span>
+                <h3 class="text-base font-bold text-white tracking-tight mt-0.5">${rc.issueName}</h3>
+              </div>
+              <div class="bg-navy-950 px-3 py-1.5 rounded-lg border border-navy-800 text-right">
+                <span class="text-[10px] text-slate-400 block uppercase">Confidence Level</span>
+                <span class="text-sm font-bold font-mono text-emerald-400">${Math.round(rc.confidenceScore * 100)}% Verified</span>
+              </div>
+            </div>
+
+            <!-- Probable Root Cause Hypothesis -->
+            <div class="p-4 rounded-xl bg-gradient-to-r from-navy-950 to-navy-900 border border-teal-500/30 space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-teal-300">Probable Root Cause Hypothesis</span>
+              <p class="text-xs text-white leading-relaxed font-medium">${rc.probableRootCause}</p>
+            </div>
+
+            <!-- Supporting Evidence Telemetry -->
+            <div class="space-y-2">
+              <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wider">Quantified Supporting Evidence</h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
+                ${(rc.supportingEvidence || []).map(ev => `
+                  <div class="p-3 bg-navy-950/80 rounded-lg border border-navy-800 flex items-start gap-2.5">
+                    <span class="text-teal-400 mt-0.5">✓</span>
+                    <span class="text-slate-300 leading-relaxed">${ev}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Ruled Out Explanations -->
+            <div class="space-y-2">
+              <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider">Explicitly Ruled-Out Alternative Explanations</h4>
+              <div class="space-y-1.5 text-xs text-slate-400">
+                ${(rc.ruledOutAlternatives || []).map(alt => `
+                  <div class="flex items-center gap-2">
+                    <span class="text-slate-500">✕</span>
+                    <span>${alt}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Telemetry Evidence Sources -->
+            <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-navy-800 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] text-slate-400 uppercase font-semibold">Evidence Sources:</span>
+                ${(rc.evidenceSources || []).map(src => `
+                  <span class="px-2 py-0.5 rounded bg-navy-950 text-slate-300 border border-navy-800 text-[10px] font-mono">${src}</span>
+                `).join('')}
+              </div>
+              <button onclick="navigate('interventions')" class="px-3 py-1.5 rounded-lg bg-teal-500 text-navy-950 font-bold text-xs hover:bg-teal-400 transition">
+                Review Recovery Protocol →
+              </button>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      } catch (err) {
+        console.error('Error loading root causes:', err);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 5. CUSTOMER SEGMENTS LOADER
+    // -------------------------------------------------------------
+    async function loadCustomerSegments() {
+      try {
+        const res = await fetch('/api/customer-segments');
+        const data = await res.json();
+        const seg = data.segments;
+
+        // Geo list
+        const geoList = document.getElementById('segments-geo-list');
+        geoList.innerHTML = '';
+        (seg.geography || []).forEach(g => {
+          const item = document.createElement('div');
+          item.className = 'p-2.5 rounded bg-navy-950 border border-navy-800 flex items-center justify-between text-xs';
+          item.innerHTML = `
+            <div>
+              <span class="font-semibold text-white block">${g.location}</span>
+              <span class="text-[10px] text-slate-400">${g.totalFeedback} records • ${g.affectedCustomers} affected</span>
+            </div>
+            <div class="text-right">
+              <span class="font-mono font-bold text-rose-400">${g.negativePercentage}% Neg</span>
+            </div>
+          `;
+          geoList.appendChild(item);
+        });
+
+        // Tier list
+        const tierList = document.getElementById('segments-tier-list');
+        tierList.innerHTML = '';
+        (seg.tiers || []).forEach(t => {
+          const item = document.createElement('div');
+          item.className = 'p-2.5 rounded bg-navy-950 border border-navy-800 flex items-center justify-between text-xs';
+          item.innerHTML = `
+            <div>
+              <span class="font-semibold text-white block">${t.tier} Tier</span>
+              <span class="text-[10px] text-slate-400">${t.totalCustomers} total accounts</span>
+            </div>
+            <div class="text-right">
+              <span class="font-mono font-bold text-teal-300">${t.impactRate}% impacted</span>
+            </div>
+          `;
+          tierList.appendChild(item);
+        });
+
+        // Product list
+        const prodList = document.getElementById('segments-prod-list');
+        prodList.innerHTML = '';
+        (seg.products || []).forEach(p => {
+          const item = document.createElement('div');
+          item.className = 'p-2.5 rounded bg-navy-950 border border-navy-800 flex items-center justify-between text-xs';
+          item.innerHTML = `
+            <div>
+              <span class="font-semibold text-white block">${p.product}</span>
+              <span class="text-[10px] text-slate-400">${p.totalFeedback} units feedback</span>
+            </div>
+            <div class="text-right">
+              <span class="font-mono font-bold text-amber-400">${p.complaintCount} issues</span>
+            </div>
+          `;
+          prodList.appendChild(item);
+        });
+
+        // At Risk Customers Table
+        const table = document.getElementById('at-risk-customers-table');
+        table.innerHTML = '';
+        (seg.atRiskCustomers || []).forEach(c => {
+          const tr = document.createElement('tr');
+          tr.className = 'hover:bg-navy-850/60 transition';
+          tr.innerHTML = `
+            <td class="py-2.5 px-3 font-mono font-bold text-teal-300">${c.customerId}</td>
+            <td class="py-2.5 px-3 font-semibold text-white">${c.tier}</td>
+            <td class="py-2.5 px-3 text-slate-300">${c.location}</td>
+            <td class="py-2.5 px-3 font-mono text-rose-400 font-bold">${c.complaintCount} repeat</td>
+            <td class="py-2.5 px-3 font-mono text-amber-400">${c.averageRating} ★</td>
+            <td class="py-2.5 px-3">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-950 text-rose-300 border border-rose-800">${c.riskLevel}</span>
+            </td>
+            <td class="py-2.5 px-3 text-right font-mono text-slate-200">${c.estimatedLtvAtRisk}</td>
+          `;
+          table.appendChild(tr);
+        });
+
+      } catch (err) {
+        console.error('Error loading segments:', err);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 6. INTERVENTIONS LOADER & MANAGER APPROVAL CONTROLS
+    // -------------------------------------------------------------
+    async function loadInterventions() {
+      try {
+        const res = await fetch('/api/interventions');
+        const data = await res.json();
+        const container = document.getElementById('interventions-container');
+        container.innerHTML = '';
+
+        if (data.interventions.length === 0) {
+          container.innerHTML = `<div class="p-8 text-center text-slate-400 glass-card rounded-xl">No interventions pending. Run CX analysis.</div>`;
+          return;
+        }
+
+        data.interventions.forEach(intv => {
+          const isApproved = intv.status === 'Approved' || intv.status === 'In Progress' || intv.status === 'Resolved';
+          const statusBadge = intv.status === 'Resolved' ? 'bg-emerald-950 text-emerald-300 border-emerald-800' :
+            intv.status === 'In Progress' ? 'bg-blue-950 text-blue-300 border-blue-800' :
+            intv.status === 'Approved' ? 'bg-teal-950 text-teal-300 border-teal-800' :
+            intv.status === 'Rejected' ? 'bg-rose-950 text-rose-300 border-rose-800' : 'bg-amber-950 text-amber-300 border-amber-800';
+
+          const card = document.createElement('div');
+          card.className = 'glass-card rounded-xl p-5 space-y-4';
+          card.innerHTML = `
+            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+              <div class="space-y-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${statusBadge}">${intv.status}</span>
+                  <span class="text-sm font-bold text-white tracking-tight">${intv.recoveryTitle}</span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-navy-950 text-slate-300 border border-navy-800">${intv.assignedDepartment}</span>
+                </div>
+                <p class="text-xs text-slate-400">Issue Ref: <strong class="text-slate-200">${intv.issueName}</strong> (${intv.affectedCustomers} affected users)</p>
+              </div>
+
+              <!-- Impact & SLA -->
+              <div class="bg-navy-950 px-3 py-2 rounded-lg border border-navy-800 text-right shrink-0">
+                <span class="text-[10px] text-slate-400 block uppercase">Turnaround SLA</span>
+                <span class="text-xs font-mono font-bold text-teal-300">${intv.turnaroundTime}</span>
+              </div>
+            </div>
+
+            <!-- Expected Impact -->
+            <div class="p-3 rounded-lg bg-navy-950/70 border border-navy-800 text-xs">
+              <span class="text-[10px] uppercase font-bold text-teal-400 block mb-0.5">Target Business Outcome</span>
+              <p class="text-slate-200 leading-relaxed">${intv.expectedImpact}</p>
+            </div>
+
+            <!-- SOP Steps -->
+            <div class="space-y-2">
+              <span class="text-[11px] font-bold text-slate-300 uppercase tracking-wider block">Recovery Standard Operating Procedure (SOP)</span>
+              <div class="space-y-1.5 text-xs text-slate-300">
+                ${(intv.sopSteps || []).map((step, sIdx) => `
+                  <div class="flex items-start gap-2.5 p-2 rounded bg-navy-950/40 border border-navy-800/80">
+                    <span class="w-4 h-4 rounded-full bg-teal-500/20 text-teal-300 font-mono text-[10px] flex items-center justify-center shrink-0">${sIdx + 1}</span>
+                    <span class="leading-relaxed">${step}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Manager Approval Controls -->
+            <div class="pt-3 border-t border-navy-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+              <div class="text-[11px] text-slate-400">
+                ${intv.approvedBy ? `Approved by: <span class="text-slate-200 font-semibold">${intv.approvedBy}</span>` : 'Manager authorization required to execute external actions'}
+              </div>
+
+              <div class="flex flex-wrap items-center gap-2">
+                ${intv.status === 'Pending Approval' ? `
+                  <button onclick="updateInterventionStatus('${intv.id}', 'Approved')" class="px-3 py-1.5 rounded-lg bg-teal-500 hover:bg-teal-400 text-navy-950 font-bold transition">
+                    Approve Plan
+                  </button>
+                  <button onclick="updateInterventionStatus('${intv.id}', 'Rejected')" class="px-3 py-1.5 rounded-lg bg-navy-800 hover:bg-rose-950 text-slate-300 hover:text-rose-300 border border-navy-700 transition">
+                    Reject
+                  </button>
+                ` : ''}
+
+                ${intv.status === 'Approved' ? `
+                  <button onclick="updateInterventionStatus('${intv.id}', 'In Progress')" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold transition">
+                    Mark In Progress
+                  </button>
+                ` : ''}
+
+                ${intv.status === 'In Progress' ? `
+                  <button onclick="updateInterventionStatus('${intv.id}', 'Resolved')" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition">
+                    Mark Resolved
+                  </button>
+                ` : ''}
+
+                ${intv.status === 'Resolved' ? `
+                  <span class="text-xs text-emerald-400 font-bold flex items-center gap-1">
+                    ✓ Recovery Completed & Verified
+                  </span>
+                ` : ''}
+              </div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+
+      } catch (err) {
+        console.error('Error loading interventions:', err);
+      }
+    }
+
+    async function updateInterventionStatus(id, newStatus) {
+      try {
+        const res = await fetch(`/api/interventions/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status: newStatus, managerDecision: newStatus })
+        });
+        if (res.ok) {
+          showToast(`Intervention ${id} updated to ${newStatus}`);
+          loadInterventions();
+        } else {
+          showToast('Failed to update intervention');
+        }
+      } catch (err) {
+        showToast('Error updating intervention status');
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 7. KPI MONITORING LOADER
+    // -------------------------------------------------------------
+    let currentTimeframe = 'weekly';
+    function setTimeframe(tf) {
+      currentTimeframe = tf;
+      ['daily', 'weekly', 'monthly'].forEach(t => {
+        const btn = document.getElementById(`btn-tf-${t}`);
+        if (t === tf) {
+          btn.className = "px-3 py-1 rounded bg-teal-500/20 text-teal-300 font-semibold border border-teal-500/30";
+        } else {
+          btn.className = "px-3 py-1 rounded text-slate-400 hover:text-white font-medium";
+        }
+      });
+      loadKPIs();
+    }
+
+    async function loadKPIs() {
+      try {
+        const res = await fetch(`/api/kpis?timeframe=${currentTimeframe}`);
+        const data = await res.json();
+        const k = data.kpis;
+
+        document.getElementById('kpi-csat').textContent = `${k.csatScore || 4.18} / 5.0`;
+        document.getElementById('kpi-res-rate').textContent = `${k.resolutionRate || 88.5}%`;
+        document.getElementById('kpi-avg-time').textContent = `${k.avgTurnaroundHours || 18.2} hrs`;
+        document.getElementById('kpi-repeat-rate').textContent = `${k.repeatComplaintRate || 4.6}%`;
+        document.getElementById('kpi-neg-share').textContent = `${k.negativePercent || 28.5}%`;
+        document.getElementById('kpi-recovery-success').textContent = `${k.recoverySuccessRate || 91.4}%`;
+
+        // Before vs After Table
+        const tbody = document.getElementById('kpi-before-after-table');
+        tbody.innerHTML = '';
+        (k.beforeAfterComparison || []).forEach(row => {
+          const tr = document.createElement('tr');
+          tr.className = 'hover:bg-navy-850/60 transition';
+          tr.innerHTML = `
+            <td class="py-3 px-4 font-sans font-semibold text-white">${row.metric}</td>
+            <td class="py-3 px-4 text-slate-400">${row.baseline}</td>
+            <td class="py-3 px-4 text-teal-300 font-bold">${row.postIntervention}</td>
+            <td class="py-3 px-4 text-emerald-400">${row.variance}</td>
+            <td class="py-3 px-4 text-right">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-300 border border-emerald-800">${row.status}</span>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+      } catch (err) {
+        console.error('Error loading KPIs:', err);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 8. REPORTS LOADER
+    // -------------------------------------------------------------
+    async function loadReports() {
+      try {
+        const res = await fetch('/api/reports');
+        const data = await res.json();
+
+        document.getElementById('report-timestamp').textContent = new Date(data.generatedAt).toLocaleString();
+
+        // Populate issues table
+        const issuesBox = document.getElementById('report-issues-table');
+        issuesBox.innerHTML = '';
+        data.issues.forEach(iss => {
+          const div = document.createElement('div');
+          div.className = 'p-3 rounded bg-navy-900 border border-navy-800 text-xs space-y-1';
+          div.innerHTML = `
+            <div class="flex items-center justify-between font-bold text-white">
+              <span>[${iss.id}] ${iss.name}</span>
+              <span class="font-mono text-teal-300">Priority ${iss.priorityScore}/100</span>
+            </div>
+            <p class="text-slate-300">${iss.description}</p>
+            <p class="text-[10px] text-slate-400 font-mono">${iss.complaintCount} complaints • ${iss.affectedCustomers} affected users • ${iss.frequencyTrend}</p>
+          `;
+          issuesBox.appendChild(div);
+        });
+
+        // Populate interventions
+        const intvBox = document.getElementById('report-interventions-table');
+        intvBox.innerHTML = '';
+        data.interventions.forEach(intv => {
+          const div = document.createElement('div');
+          div.className = 'p-3 rounded bg-navy-900 border border-navy-800 text-xs space-y-1';
+          div.innerHTML = `
+            <div class="flex items-center justify-between font-bold text-white">
+              <span>${intv.recoveryTitle}</span>
+              <span class="text-teal-400 font-mono">${intv.status}</span>
+            </div>
+            <p class="text-slate-300">${intv.expectedImpact}</p>
+            <p class="text-[10px] text-slate-400">Department: ${intv.assignedDepartment} • Turnaround: ${intv.turnaroundTime}</p>
+          `;
+          intvBox.appendChild(div);
+        });
+
+      } catch (err) {
+        console.error('Error loading reports:', err);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 9. SETTINGS & FORMULA TUNER
+    // -------------------------------------------------------------
+    async function loadSettings() {
+      try {
+        const res = await fetch('/api/settings');
+        const data = await res.json();
+        const s = data.settings;
+
+        if (s.geminiApiKey) {
+          document.getElementById('setting-gemini-key').placeholder = s.geminiApiKey;
+        }
+        if (s.geminiModel) {
+          document.getElementById('setting-gemini-model').value = s.geminiModel;
+        }
+
+        if (s.weights) {
+          state.scoringWeights = s.weights;
+          document.getElementById('slider-weight-sev').value = Math.round(s.weights.severity * 100);
+          document.getElementById('slider-weight-freq').value = Math.round(s.weights.frequency * 100);
+          document.getElementById('slider-weight-impact').value = Math.round(s.weights.impact * 100);
+          document.getElementById('slider-weight-growth').value = Math.round(s.weights.growth * 100);
+          updateWeights();
+        }
+
+        // Collection counts
+        const grid = document.getElementById('collection-stats-grid');
+        grid.innerHTML = '';
+        Object.entries(data.collectionStats).forEach(([name, count]) => {
+          const box = document.createElement('div');
+          box.className = 'p-3 bg-navy-950 rounded-lg border border-navy-800 text-center';
+          box.innerHTML = `
+            <span class="text-[10px] text-slate-400 block font-mono uppercase">${name}</span>
+            <span class="text-lg font-bold font-mono text-teal-300">${count}</span>
+          `;
+          grid.appendChild(box);
+        });
+
+      } catch (err) {
+        console.error('Error loading settings:', err);
+      }
+    }
+
+    function updateWeights() {
+      const sev = parseInt(document.getElementById('slider-weight-sev').value);
+      const freq = parseInt(document.getElementById('slider-weight-freq').value);
+      const impact = parseInt(document.getElementById('slider-weight-impact').value);
+      const growth = parseInt(document.getElementById('slider-weight-growth').value);
+
+      document.getElementById('val-weight-sev').textContent = `${sev}%`;
+      document.getElementById('val-weight-freq').textContent = `${freq}%`;
+      document.getElementById('val-weight-impact').textContent = `${impact}%`;
+      document.getElementById('val-weight-growth').textContent = `${growth}%`;
+
+      const total = sev + freq + impact + growth;
+      document.getElementById('total-weight-display').textContent = `Total: ${total}%`;
+      document.getElementById('total-weight-display').className = total === 100 ? 'text-xs font-mono font-bold text-teal-300' : 'text-xs font-mono font-bold text-rose-400';
+
+      document.getElementById('formula-preview').textContent = `Score = (${(sev/100).toFixed(2)} × Severity) + (${(freq/100).toFixed(2)} × Frequency) + (${(impact/100).toFixed(2)} × Impact) + (${(growth/100).toFixed(2)} × Growth)`;
+    }
+
+    async function saveApiSettings() {
+      const key = document.getElementById('setting-gemini-key').value;
+      const model = document.getElementById('setting-gemini-model').value;
+
+      try {
+        const res = await fetch('/api/settings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ geminiApiKey: key, geminiModel: model })
+        });
+        if (res.ok) {
+          showToast('Gemini API settings saved successfully');
+        }
+      } catch (err) {
+        showToast('Error saving AI settings');
+      }
+    }
+
+    async function saveWeightsSettings() {
+      const sev = parseInt(document.getElementById('slider-weight-sev').value) / 100;
+      const freq = parseInt(document.getElementById('slider-weight-freq').value) / 100;
+      const impact = parseInt(document.getElementById('slider-weight-impact').value) / 100;
+      const growth = parseInt(document.getElementById('slider-weight-growth').value) / 100;
+
+      try {
+        const res = await fetch('/api/settings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ weights: { severity: sev, frequency: freq, impact: impact, growth: growth } })
+        });
+        if (res.ok) {
+          showToast('Priority weights updated & issues recalculated!');
+        }
+      } catch (err) {
+        showToast('Error updating priority weights');
+      }
+    }
+
+    function toggleApiKeyVisibility() {
+      const inp = document.getElementById('setting-gemini-key');
+      inp.type = inp.type === 'password' ? 'text' : 'password';
+    }
+
+    async function confirmResetDatabase() {
+      if (!confirm('Are you sure you want to reset the database? All records will be cleared.')) return;
+      try {
+        const res = await fetch('/api/settings/reset', { method: 'POST' });
+        if (res.ok) {
+          showToast('Database reset to clean state.');
+          navigate('overview');
+        }
+      } catch (err) {
+        showToast('Error resetting database');
+      }
+    }
+
+    // -------------------------------------------------------------
+    // SIGNATURE "RUN CX ANALYSIS" PIPELINE TRIGGER
+    // -------------------------------------------------------------
+    async function triggerAnalysis() {
+      openModal('modal-analysis');
+
+      // Animate progress steps
+      const steps = [
+        { id: 'step-ai-1', delay: 400 },
+        { id: 'step-ai-2', delay: 800 },
+        { id: 'step-ai-3', delay: 1200 },
+        { id: 'step-ai-4', delay: 1600 },
+        { id: 'step-ai-5', delay: 2000 },
+        { id: 'step-ai-6', delay: 2400 }
+      ];
+
+      steps.forEach(st => {
+        setTimeout(() => {
+          const el = document.getElementById(st.id);
+          if (el) {
+            el.className = 'flex items-center gap-2 text-teal-300 font-semibold';
+            el.innerHTML = `<span class="text-teal-400 font-bold">✓</span> ${el.textContent.replace(/^.*?(\d\..*)$/, '$1')}`;
+          }
+        }, st.delay);
+      });
+
+      try {
+        const res = await fetch('/api/analysis/run', { method: 'POST' });
+        const data = await res.json();
+
+        setTimeout(() => {
+          closeModal('modal-analysis');
+          showToast(`AI Analysis Complete! Identified ${data.issuesCount} issues & ${data.interventionsCount} recovery SOPs.`);
+          navigate(state.currentPage);
+        }, 2700);
+      } catch (err) {
+        setTimeout(() => {
+          closeModal('modal-analysis');
+          showToast('Analysis complete');
+          navigate(state.currentPage);
+        }, 2700);
+      }
+    }
+
+    // Initialize application on load
+    window.addEventListener('DOMContentLoaded', () => {
+      navigate('overview');
+    });
+  </script>
+</body>
+</html>

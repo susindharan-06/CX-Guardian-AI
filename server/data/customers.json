@@ -1,0 +1,2116 @@
+[
+  {
+    "customer_id": "CUST-1278",
+    "tier": "Premium",
+    "location": "Bangalore",
+    "total_orders": 2,
+    "created_at": "2026-10-25T10:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1334",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-06T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1114",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 4,
+    "created_at": "2026-10-25T23:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1450",
+    "tier": "New",
+    "location": "Pune",
+    "total_orders": 2,
+    "created_at": "2026-10-22T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1170",
+    "tier": "Enterprise",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-29T20:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1110",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-21T04:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1015",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 4,
+    "created_at": "2026-10-10T00:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1202",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 4,
+    "created_at": "2026-10-12T14:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1448",
+    "tier": "Premium",
+    "location": "Hyderabad",
+    "total_orders": 1,
+    "created_at": "2026-10-15T09:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1243",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-19T21:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1130",
+    "tier": "Premium",
+    "location": "Pune",
+    "total_orders": 4,
+    "created_at": "2026-10-18T19:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1299",
+    "tier": "Enterprise",
+    "location": "Mumbai",
+    "total_orders": 1,
+    "created_at": "2026-10-14T16:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1235",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 4,
+    "created_at": "2026-10-14T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1381",
+    "tier": "Premium",
+    "location": "Delhi",
+    "total_orders": 3,
+    "created_at": "2026-10-26T20:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1197",
+    "tier": "New",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-12T16:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1180",
+    "tier": "Enterprise",
+    "location": "Coimbatore",
+    "total_orders": 2,
+    "created_at": "2026-10-20T00:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1063",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-24T02:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1190",
+    "tier": "New",
+    "location": "Pune",
+    "total_orders": 1,
+    "created_at": "2026-10-08T03:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1390",
+    "tier": "Premium",
+    "location": "Delhi",
+    "total_orders": 1,
+    "created_at": "2026-10-22T03:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1276",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 4,
+    "created_at": "2026-10-20T21:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1373",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-23T21:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1338",
+    "tier": "New",
+    "location": "Bangalore",
+    "total_orders": 2,
+    "created_at": "2026-10-12T00:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1316",
+    "tier": "New",
+    "location": "Mumbai",
+    "total_orders": 1,
+    "created_at": "2026-10-30T20:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1306",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-14T21:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1056",
+    "tier": "Enterprise",
+    "location": "Delhi",
+    "total_orders": 2,
+    "created_at": "2026-10-03T02:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1265",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-06T13:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1436",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 3,
+    "created_at": "2026-10-06T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1187",
+    "tier": "Premium",
+    "location": "Bangalore",
+    "total_orders": 3,
+    "created_at": "2026-10-09T08:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1230",
+    "tier": "Premium",
+    "location": "Mumbai",
+    "total_orders": 2,
+    "created_at": "2026-10-29T13:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1059",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-07T06:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1218",
+    "tier": "VIP",
+    "location": "Madurai",
+    "total_orders": 3,
+    "created_at": "2026-10-21T00:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1236",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 3,
+    "created_at": "2026-10-06T06:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1346",
+    "tier": "Premium",
+    "location": "Coimbatore",
+    "total_orders": 1,
+    "created_at": "2026-10-03T16:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1292",
+    "tier": "New",
+    "location": "Bangalore",
+    "total_orders": 2,
+    "created_at": "2026-10-04T14:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1043",
+    "tier": "Premium",
+    "location": "Mumbai",
+    "total_orders": 4,
+    "created_at": "2026-10-20T19:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1408",
+    "tier": "Regular",
+    "location": "Delhi",
+    "total_orders": 4,
+    "created_at": "2026-10-03T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1195",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-08T05:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1177",
+    "tier": "Regular",
+    "location": "Coimbatore",
+    "total_orders": 2,
+    "created_at": "2026-10-23T08:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1022",
+    "tier": "New",
+    "location": "Delhi",
+    "total_orders": 1,
+    "created_at": "2026-10-11T11:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1433",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-07T04:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1413",
+    "tier": "New",
+    "location": "Bangalore",
+    "total_orders": 3,
+    "created_at": "2026-10-10T22:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1330",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 3,
+    "created_at": "2026-10-26T17:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1013",
+    "tier": "Premium",
+    "location": "Delhi",
+    "total_orders": 2,
+    "created_at": "2026-10-26T10:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1097",
+    "tier": "VIP",
+    "location": "Mumbai",
+    "total_orders": 1,
+    "created_at": "2026-10-23T06:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1297",
+    "tier": "Regular",
+    "location": "Mumbai",
+    "total_orders": 2,
+    "created_at": "2026-10-28T12:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1245",
+    "tier": "Enterprise",
+    "location": "Mumbai",
+    "total_orders": 2,
+    "created_at": "2026-10-29T23:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1132",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-24T13:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1343",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 3,
+    "created_at": "2026-10-20T20:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1283",
+    "tier": "New",
+    "location": "Mumbai",
+    "total_orders": 2,
+    "created_at": "2026-10-05T22:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1449",
+    "tier": "New",
+    "location": "Bangalore",
+    "total_orders": 3,
+    "created_at": "2026-10-09T21:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1057",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-28T08:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1030",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-26T08:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1395",
+    "tier": "New",
+    "location": "Delhi",
+    "total_orders": 1,
+    "created_at": "2026-10-23T17:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1397",
+    "tier": "Regular",
+    "location": "Madurai",
+    "total_orders": 3,
+    "created_at": "2026-10-21T11:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1427",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-13T04:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1237",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-22T06:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1008",
+    "tier": "VIP",
+    "location": "Hyderabad",
+    "total_orders": 2,
+    "created_at": "2026-10-15T10:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1017",
+    "tier": "Regular",
+    "location": "Hyderabad",
+    "total_orders": 2,
+    "created_at": "2026-10-05T08:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1215",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-18T20:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1048",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-27T13:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1154",
+    "tier": "Regular",
+    "location": "Delhi",
+    "total_orders": 2,
+    "created_at": "2026-10-03T06:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1089",
+    "tier": "Premium",
+    "location": "Delhi",
+    "total_orders": 2,
+    "created_at": "2026-10-13T08:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1442",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-18T09:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1191",
+    "tier": "VIP",
+    "location": "Mumbai",
+    "total_orders": 2,
+    "created_at": "2026-10-28T14:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1046",
+    "tier": "Premium",
+    "location": "Pune",
+    "total_orders": 2,
+    "created_at": "2026-10-28T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1380",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-16T15:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1339",
+    "tier": "VIP",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-18T17:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1203",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-16T22:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1261",
+    "tier": "VIP",
+    "location": "Bangalore",
+    "total_orders": 2,
+    "created_at": "2026-10-07T08:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1225",
+    "tier": "Premium",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-30T02:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1087",
+    "tier": "New",
+    "location": "Bangalore",
+    "total_orders": 2,
+    "created_at": "2026-10-02T15:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1392",
+    "tier": "Enterprise",
+    "location": "Hyderabad",
+    "total_orders": 3,
+    "created_at": "2026-10-08T23:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1331",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-24T20:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1224",
+    "tier": "Premium",
+    "location": "Mumbai",
+    "total_orders": 3,
+    "created_at": "2026-10-10T20:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1101",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-23T10:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1288",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-06T04:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1067",
+    "tier": "New",
+    "location": "Delhi",
+    "total_orders": 2,
+    "created_at": "2026-10-10T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1108",
+    "tier": "Enterprise",
+    "location": "Mumbai",
+    "total_orders": 1,
+    "created_at": "2026-10-09T11:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1076",
+    "tier": "VIP",
+    "location": "Mumbai",
+    "total_orders": 1,
+    "created_at": "2026-10-15T01:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1290",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-17T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1085",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 3,
+    "created_at": "2026-10-20T14:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1050",
+    "tier": "Premium",
+    "location": "Mumbai",
+    "total_orders": 3,
+    "created_at": "2026-10-21T21:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1365",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-21T15:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1242",
+    "tier": "New",
+    "location": "Madurai",
+    "total_orders": 1,
+    "created_at": "2026-10-28T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1289",
+    "tier": "Premium",
+    "location": "Delhi",
+    "total_orders": 2,
+    "created_at": "2026-10-18T03:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1189",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-14T09:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1127",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-04T03:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1020",
+    "tier": "Enterprise",
+    "location": "Delhi",
+    "total_orders": 2,
+    "created_at": "2026-10-29T10:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1111",
+    "tier": "New",
+    "location": "Bangalore",
+    "total_orders": 4,
+    "created_at": "2026-10-25T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1163",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-07T10:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1104",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 3,
+    "created_at": "2026-10-11T03:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1093",
+    "tier": "New",
+    "location": "Coimbatore",
+    "total_orders": 1,
+    "created_at": "2026-10-22T07:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1092",
+    "tier": "VIP",
+    "location": "Mumbai",
+    "total_orders": 1,
+    "created_at": "2026-10-05T14:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1119",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-27T12:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1247",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 3,
+    "created_at": "2026-10-24T05:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1309",
+    "tier": "VIP",
+    "location": "Coimbatore",
+    "total_orders": 1,
+    "created_at": "2026-10-12T01:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1070",
+    "tier": "VIP",
+    "location": "Hyderabad",
+    "total_orders": 1,
+    "created_at": "2026-10-21T19:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1181",
+    "tier": "New",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-26T16:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1151",
+    "tier": "Enterprise",
+    "location": "Delhi",
+    "total_orders": 2,
+    "created_at": "2026-10-06T13:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1255",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-24T07:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1246",
+    "tier": "Enterprise",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-05T03:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1301",
+    "tier": "VIP",
+    "location": "Bangalore",
+    "total_orders": 2,
+    "created_at": "2026-10-04T14:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1411",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-23T05:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1121",
+    "tier": "VIP",
+    "location": "Bangalore",
+    "total_orders": 2,
+    "created_at": "2026-10-06T02:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1019",
+    "tier": "VIP",
+    "location": "Bangalore",
+    "total_orders": 3,
+    "created_at": "2026-10-07T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1383",
+    "tier": "Enterprise",
+    "location": "Delhi",
+    "total_orders": 2,
+    "created_at": "2026-10-11T22:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1023",
+    "tier": "Enterprise",
+    "location": "Pune",
+    "total_orders": 2,
+    "created_at": "2026-10-13T12:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1337",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-30T15:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1438",
+    "tier": "Enterprise",
+    "location": "Bangalore",
+    "total_orders": 3,
+    "created_at": "2026-10-14T14:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1096",
+    "tier": "VIP",
+    "location": "Mumbai",
+    "total_orders": 2,
+    "created_at": "2026-10-28T13:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1138",
+    "tier": "Enterprise",
+    "location": "Mumbai",
+    "total_orders": 2,
+    "created_at": "2026-10-20T02:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1262",
+    "tier": "Enterprise",
+    "location": "Delhi",
+    "total_orders": 1,
+    "created_at": "2026-10-02T09:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1010",
+    "tier": "Premium",
+    "location": "Mumbai",
+    "total_orders": 1,
+    "created_at": "2026-10-27T03:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1091",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-13T04:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1327",
+    "tier": "VIP",
+    "location": "Mumbai",
+    "total_orders": 2,
+    "created_at": "2026-10-10T06:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1407",
+    "tier": "New",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-05T09:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1011",
+    "tier": "VIP",
+    "location": "Pune",
+    "total_orders": 1,
+    "created_at": "2026-10-11T02:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1441",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 4,
+    "created_at": "2026-10-15T11:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1216",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-11T03:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1182",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-11T16:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1077",
+    "tier": "New",
+    "location": "Pune",
+    "total_orders": 1,
+    "created_at": "2026-10-11T12:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1244",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-05T14:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1362",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 3,
+    "created_at": "2026-10-11T06:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1173",
+    "tier": "Premium",
+    "location": "Delhi",
+    "total_orders": 2,
+    "created_at": "2026-10-07T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1256",
+    "tier": "New",
+    "location": "Mumbai",
+    "total_orders": 2,
+    "created_at": "2026-10-12T21:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1157",
+    "tier": "Regular",
+    "location": "Coimbatore",
+    "total_orders": 1,
+    "created_at": "2026-10-07T20:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1094",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-11T15:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1325",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-03T15:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1324",
+    "tier": "VIP",
+    "location": "Bangalore",
+    "total_orders": 2,
+    "created_at": "2026-10-22T06:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1260",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-25T14:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1131",
+    "tier": "New",
+    "location": "Coimbatore",
+    "total_orders": 3,
+    "created_at": "2026-10-24T11:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1069",
+    "tier": "Premium",
+    "location": "Mumbai",
+    "total_orders": 2,
+    "created_at": "2026-10-19T15:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1422",
+    "tier": "Premium",
+    "location": "Bangalore",
+    "total_orders": 3,
+    "created_at": "2026-10-29T20:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1353",
+    "tier": "VIP",
+    "location": "Delhi",
+    "total_orders": 3,
+    "created_at": "2026-10-19T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1385",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-23T10:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1294",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-25T15:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1211",
+    "tier": "VIP",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-06T17:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1400",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-17T03:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1320",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-08T09:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1446",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 4,
+    "created_at": "2026-10-07T05:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1222",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-10T14:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1435",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-11T07:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1206",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-04T21:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1279",
+    "tier": "Enterprise",
+    "location": "Delhi",
+    "total_orders": 1,
+    "created_at": "2026-10-12T00:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1198",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-07T16:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1434",
+    "tier": "Enterprise",
+    "location": "Bangalore",
+    "total_orders": 3,
+    "created_at": "2026-10-28T19:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1253",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-03T12:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1217",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-12T12:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1016",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-14T23:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1148",
+    "tier": "Regular",
+    "location": "Hyderabad",
+    "total_orders": 1,
+    "created_at": "2026-10-16T00:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1061",
+    "tier": "VIP",
+    "location": "Delhi",
+    "total_orders": 6,
+    "created_at": "2026-10-27T19:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1084",
+    "tier": "Premium",
+    "location": "Bangalore",
+    "total_orders": 2,
+    "created_at": "2026-10-06T20:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1179",
+    "tier": "VIP",
+    "location": "Mumbai",
+    "total_orders": 3,
+    "created_at": "2026-10-29T13:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1088",
+    "tier": "Premium",
+    "location": "Bangalore",
+    "total_orders": 2,
+    "created_at": "2026-10-16T14:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1323",
+    "tier": "Premium",
+    "location": "Mumbai",
+    "total_orders": 3,
+    "created_at": "2026-10-19T20:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1171",
+    "tier": "Enterprise",
+    "location": "Coimbatore",
+    "total_orders": 1,
+    "created_at": "2026-10-30T06:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1185",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 3,
+    "created_at": "2026-10-22T10:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1208",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-18T15:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1382",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-04T23:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1263",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-04T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1307",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-29T07:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1051",
+    "tier": "VIP",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-21T22:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1113",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 4,
+    "created_at": "2026-10-13T19:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1371",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-29T20:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1156",
+    "tier": "New",
+    "location": "Hyderabad",
+    "total_orders": 1,
+    "created_at": "2026-10-08T00:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1125",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-06T03:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1401",
+    "tier": "New",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-17T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1161",
+    "tier": "Premium",
+    "location": "Bangalore",
+    "total_orders": 2,
+    "created_at": "2026-10-23T08:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1186",
+    "tier": "Regular",
+    "location": "Hyderabad",
+    "total_orders": 1,
+    "created_at": "2026-10-09T14:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1073",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 3,
+    "created_at": "2026-10-18T13:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1137",
+    "tier": "Enterprise",
+    "location": "Madurai",
+    "total_orders": 1,
+    "created_at": "2026-10-13T01:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1405",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-30T20:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1079",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-18T21:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1135",
+    "tier": "VIP",
+    "location": "Bangalore",
+    "total_orders": 2,
+    "created_at": "2026-10-06T20:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1196",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-05T06:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1205",
+    "tier": "Regular",
+    "location": "Bangalore",
+    "total_orders": 2,
+    "created_at": "2026-10-21T10:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1169",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-15T01:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1241",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 3,
+    "created_at": "2026-10-30T10:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1028",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-27T04:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1270",
+    "tier": "VIP",
+    "location": "Mumbai",
+    "total_orders": 2,
+    "created_at": "2026-10-16T16:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1304",
+    "tier": "VIP",
+    "location": "Coimbatore",
+    "total_orders": 1,
+    "created_at": "2026-10-05T05:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1033",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-16T20:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1116",
+    "tier": "Premium",
+    "location": "Hyderabad",
+    "total_orders": 1,
+    "created_at": "2026-10-24T05:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1347",
+    "tier": "Premium",
+    "location": "Hyderabad",
+    "total_orders": 2,
+    "created_at": "2026-10-15T05:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1300",
+    "tier": "Premium",
+    "location": "Madurai",
+    "total_orders": 3,
+    "created_at": "2026-10-30T19:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1420",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 3,
+    "created_at": "2026-10-28T10:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1095",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 3,
+    "created_at": "2026-10-05T19:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1419",
+    "tier": "VIP",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-05T02:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1321",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-03T19:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1274",
+    "tier": "VIP",
+    "location": "Mumbai",
+    "total_orders": 2,
+    "created_at": "2026-10-30T09:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1318",
+    "tier": "Enterprise",
+    "location": "Delhi",
+    "total_orders": 2,
+    "created_at": "2026-10-08T12:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1313",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-14T06:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1058",
+    "tier": "Regular",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-09T10:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1267",
+    "tier": "New",
+    "location": "Delhi",
+    "total_orders": 2,
+    "created_at": "2026-10-11T00:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1341",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-22T19:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1158",
+    "tier": "Premium",
+    "location": "Hyderabad",
+    "total_orders": 2,
+    "created_at": "2026-10-09T12:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1430",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-11T11:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1009",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-15T00:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1212",
+    "tier": "Regular",
+    "location": "Bangalore",
+    "total_orders": 2,
+    "created_at": "2026-10-18T19:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1399",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-13T17:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1258",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-07T01:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1340",
+    "tier": "VIP",
+    "location": "Bangalore",
+    "total_orders": 3,
+    "created_at": "2026-10-22T04:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1078",
+    "tier": "Enterprise",
+    "location": "Delhi",
+    "total_orders": 1,
+    "created_at": "2026-10-26T21:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1415",
+    "tier": "VIP",
+    "location": "Hyderabad",
+    "total_orders": 2,
+    "created_at": "2026-10-12T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1352",
+    "tier": "New",
+    "location": "Madurai",
+    "total_orders": 2,
+    "created_at": "2026-10-10T05:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1044",
+    "tier": "New",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-30T00:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1350",
+    "tier": "Enterprise",
+    "location": "Pune",
+    "total_orders": 1,
+    "created_at": "2026-10-07T19:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1204",
+    "tier": "New",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-20T11:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1129",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 3,
+    "created_at": "2026-10-02T10:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1026",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-04T02:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1228",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-26T00:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1098",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-05T00:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1376",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-24T09:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1404",
+    "tier": "VIP",
+    "location": "Bangalore",
+    "total_orders": 2,
+    "created_at": "2026-10-02T14:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1082",
+    "tier": "Regular",
+    "location": "Mumbai",
+    "total_orders": 4,
+    "created_at": "2026-10-14T07:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1134",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 3,
+    "created_at": "2026-10-23T17:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1155",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-04T17:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1305",
+    "tier": "Premium",
+    "location": "Mumbai",
+    "total_orders": 1,
+    "created_at": "2026-10-15T13:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1387",
+    "tier": "VIP",
+    "location": "Pune",
+    "total_orders": 2,
+    "created_at": "2026-10-09T19:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1266",
+    "tier": "Regular",
+    "location": "Delhi",
+    "total_orders": 1,
+    "created_at": "2026-10-22T05:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1219",
+    "tier": "Premium",
+    "location": "Hyderabad",
+    "total_orders": 2,
+    "created_at": "2026-10-12T12:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1423",
+    "tier": "Premium",
+    "location": "Delhi",
+    "total_orders": 1,
+    "created_at": "2026-10-10T20:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1229",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-27T22:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1233",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-14T15:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1014",
+    "tier": "Premium",
+    "location": "Delhi",
+    "total_orders": 4,
+    "created_at": "2026-10-15T16:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1393",
+    "tier": "VIP",
+    "location": "Delhi",
+    "total_orders": 2,
+    "created_at": "2026-10-11T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1124",
+    "tier": "Regular",
+    "location": "Bangalore",
+    "total_orders": 2,
+    "created_at": "2026-10-22T01:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1128",
+    "tier": "Enterprise",
+    "location": "Mumbai",
+    "total_orders": 1,
+    "created_at": "2026-10-31T02:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1141",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-16T06:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1034",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-19T23:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1406",
+    "tier": "Premium",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-04T07:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1002",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-23T23:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1123",
+    "tier": "Enterprise",
+    "location": "Hyderabad",
+    "total_orders": 1,
+    "created_at": "2026-10-06T08:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1329",
+    "tier": "Regular",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-13T08:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1363",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-04T19:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1037",
+    "tier": "New",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-15T14:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1133",
+    "tier": "Regular",
+    "location": "Coimbatore",
+    "total_orders": 1,
+    "created_at": "2026-10-23T11:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1176",
+    "tier": "New",
+    "location": "Coimbatore",
+    "total_orders": 1,
+    "created_at": "2026-10-09T10:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1398",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-24T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1379",
+    "tier": "VIP",
+    "location": "Mumbai",
+    "total_orders": 2,
+    "created_at": "2026-10-25T08:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1259",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-30T11:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1384",
+    "tier": "New",
+    "location": "Hyderabad",
+    "total_orders": 2,
+    "created_at": "2026-10-07T23:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1375",
+    "tier": "Regular",
+    "location": "Delhi",
+    "total_orders": 1,
+    "created_at": "2026-10-19T22:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1183",
+    "tier": "Regular",
+    "location": "Delhi",
+    "total_orders": 1,
+    "created_at": "2026-10-06T10:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1298",
+    "tier": "New",
+    "location": "Mumbai",
+    "total_orders": 1,
+    "created_at": "2026-10-05T05:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1396",
+    "tier": "Regular",
+    "location": "Bangalore",
+    "total_orders": 2,
+    "created_at": "2026-10-07T08:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1062",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-08T21:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1045",
+    "tier": "New",
+    "location": "Mumbai",
+    "total_orders": 2,
+    "created_at": "2026-10-31T05:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1437",
+    "tier": "VIP",
+    "location": "Delhi",
+    "total_orders": 2,
+    "created_at": "2026-10-28T10:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1248",
+    "tier": "Enterprise",
+    "location": "Delhi",
+    "total_orders": 1,
+    "created_at": "2026-10-04T17:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1060",
+    "tier": "New",
+    "location": "Hyderabad",
+    "total_orders": 1,
+    "created_at": "2026-10-09T14:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1036",
+    "tier": "New",
+    "location": "Hyderabad",
+    "total_orders": 1,
+    "created_at": "2026-10-23T13:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1361",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-25T02:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1403",
+    "tier": "New",
+    "location": "Bangalore",
+    "total_orders": 2,
+    "created_at": "2026-10-04T04:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1348",
+    "tier": "New",
+    "location": "Coimbatore",
+    "total_orders": 2,
+    "created_at": "2026-10-20T19:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1192",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-11T16:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1126",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-27T22:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1193",
+    "tier": "Regular",
+    "location": "Madurai",
+    "total_orders": 1,
+    "created_at": "2026-10-26T21:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1317",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-08T05:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1162",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 2,
+    "created_at": "2026-10-20T04:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1431",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-02T13:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1249",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-26T00:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1394",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-13T17:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1231",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-29T13:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1367",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-17T04:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1024",
+    "tier": "New",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-09T14:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1425",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-23T08:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1272",
+    "tier": "Enterprise",
+    "location": "Mumbai",
+    "total_orders": 1,
+    "created_at": "2026-10-19T06:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1424",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-08T14:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1240",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-07T12:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1308",
+    "tier": "VIP",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-30T23:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1032",
+    "tier": "Premium",
+    "location": "Delhi",
+    "total_orders": 2,
+    "created_at": "2026-10-29T15:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1071",
+    "tier": "Premium",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-26T17:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1103",
+    "tier": "Enterprise",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-12T02:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1252",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-16T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1214",
+    "tier": "New",
+    "location": "Mumbai",
+    "total_orders": 3,
+    "created_at": "2026-10-06T17:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1440",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-06T22:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1355",
+    "tier": "Regular",
+    "location": "Delhi",
+    "total_orders": 1,
+    "created_at": "2026-10-30T01:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1271",
+    "tier": "Premium",
+    "location": "Mumbai",
+    "total_orders": 2,
+    "created_at": "2026-10-25T03:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1027",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-14T17:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1153",
+    "tier": "Regular",
+    "location": "Delhi",
+    "total_orders": 3,
+    "created_at": "2026-10-31T04:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1238",
+    "tier": "VIP",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-12T01:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1322",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-03T12:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1174",
+    "tier": "Regular",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-11T11:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1102",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-23T01:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1254",
+    "tier": "Premium",
+    "location": "Mumbai",
+    "total_orders": 1,
+    "created_at": "2026-10-27T10:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1144",
+    "tier": "New",
+    "location": "Hyderabad",
+    "total_orders": 3,
+    "created_at": "2026-10-22T22:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1269",
+    "tier": "New",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-29T05:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1357",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-25T08:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1360",
+    "tier": "Regular",
+    "location": "Bangalore",
+    "total_orders": 2,
+    "created_at": "2026-10-08T23:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1150",
+    "tier": "New",
+    "location": "Delhi",
+    "total_orders": 1,
+    "created_at": "2026-10-09T09:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1268",
+    "tier": "New",
+    "location": "Mumbai",
+    "total_orders": 1,
+    "created_at": "2026-10-10T07:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1039",
+    "tier": "Enterprise",
+    "location": "Delhi",
+    "total_orders": 1,
+    "created_at": "2026-10-06T07:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1377",
+    "tier": "Regular",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-07T12:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1115",
+    "tier": "Regular",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-09T05:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1038",
+    "tier": "New",
+    "location": "Delhi",
+    "total_orders": 2,
+    "created_at": "2026-10-10T19:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1366",
+    "tier": "Enterprise",
+    "location": "Bangalore",
+    "total_orders": 1,
+    "created_at": "2026-10-11T18:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1118",
+    "tier": "VIP",
+    "location": "Delhi",
+    "total_orders": 1,
+    "created_at": "2026-10-05T04:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1146",
+    "tier": "Premium",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-13T10:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1333",
+    "tier": "VIP",
+    "location": "Mumbai",
+    "total_orders": 1,
+    "created_at": "2026-10-08T05:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1012",
+    "tier": "VIP",
+    "location": "Delhi",
+    "total_orders": 1,
+    "created_at": "2026-10-24T21:41:56.154Z"
+  },
+  {
+    "customer_id": "CUST-1142",
+    "tier": "VIP",
+    "location": "Chennai",
+    "total_orders": 1,
+    "created_at": "2026-10-14T09:41:56.154Z"
+  }
+]

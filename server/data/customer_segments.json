@@ -1,0 +1,283 @@
+{
+  "geography": [
+    {
+      "location": "Chennai",
+      "totalFeedback": 235,
+      "negativeFeedback": 123,
+      "negativePercentage": 52.3,
+      "affectedCustomers": 175
+    },
+    {
+      "location": "Bangalore",
+      "totalFeedback": 82,
+      "negativeFeedback": 22,
+      "negativePercentage": 26.8,
+      "affectedCustomers": 76
+    },
+    {
+      "location": "Delhi",
+      "totalFeedback": 64,
+      "negativeFeedback": 20,
+      "negativePercentage": 31.3,
+      "affectedCustomers": 59
+    },
+    {
+      "location": "Mumbai",
+      "totalFeedback": 64,
+      "negativeFeedback": 13,
+      "negativePercentage": 20.3,
+      "affectedCustomers": 58
+    },
+    {
+      "location": "Hyderabad",
+      "totalFeedback": 30,
+      "negativeFeedback": 8,
+      "negativePercentage": 26.7,
+      "affectedCustomers": 30
+    },
+    {
+      "location": "Pune",
+      "totalFeedback": 21,
+      "negativeFeedback": 7,
+      "negativePercentage": 33.3,
+      "affectedCustomers": 20
+    },
+    {
+      "location": "Coimbatore",
+      "totalFeedback": 18,
+      "negativeFeedback": 6,
+      "negativePercentage": 33.3,
+      "affectedCustomers": 18
+    },
+    {
+      "location": "Madurai",
+      "totalFeedback": 11,
+      "negativeFeedback": 4,
+      "negativePercentage": 36.4,
+      "affectedCustomers": 11
+    }
+  ],
+  "tiers": [
+    {
+      "tier": "Enterprise",
+      "totalCustomers": 102,
+      "negativeFeedback": 47,
+      "impactRate": 46.1
+    },
+    {
+      "tier": "VIP",
+      "totalCustomers": 113,
+      "negativeFeedback": 43,
+      "impactRate": 38.1
+    },
+    {
+      "tier": "New",
+      "totalCustomers": 118,
+      "negativeFeedback": 41,
+      "impactRate": 34.7
+    },
+    {
+      "tier": "Premium",
+      "totalCustomers": 102,
+      "negativeFeedback": 37,
+      "impactRate": 36.3
+    },
+    {
+      "tier": "Regular",
+      "totalCustomers": 90,
+      "negativeFeedback": 35,
+      "impactRate": 38.9
+    }
+  ],
+  "products": [
+    {
+      "product": "Smart Air Purifier X1",
+      "totalFeedback": 134,
+      "complaintCount": 82,
+      "failureRate": 61.2
+    },
+    {
+      "product": "SmartHome Hub Pro",
+      "totalFeedback": 120,
+      "complaintCount": 64,
+      "failureRate": 53.3
+    },
+    {
+      "product": "UltraSound ANC Headphones",
+      "totalFeedback": 71,
+      "complaintCount": 18,
+      "failureRate": 25.4
+    },
+    {
+      "product": "ErgoDesk Smart Controller",
+      "totalFeedback": 66,
+      "complaintCount": 16,
+      "failureRate": 24.2
+    },
+    {
+      "product": "SwiftCharge 100W PowerBank",
+      "totalFeedback": 79,
+      "complaintCount": 13,
+      "failureRate": 16.5
+    },
+    {
+      "product": "4K Security Camera 360",
+      "totalFeedback": 55,
+      "complaintCount": 10,
+      "failureRate": 18.2
+    }
+  ],
+  "atRiskCustomers": [
+    {
+      "customerId": "CUST-1441",
+      "tier": "VIP",
+      "location": "Chennai",
+      "complaintCount": 4,
+      "averageRating": 1.8,
+      "orderCount": 4,
+      "riskLevel": "Immediate Churn Risk",
+      "estimatedLtvAtRisk": "₹45,000 - ₹1,20,000"
+    },
+    {
+      "customerId": "CUST-1114",
+      "tier": "Enterprise",
+      "location": "Chennai",
+      "complaintCount": 3,
+      "averageRating": 2,
+      "orderCount": 4,
+      "riskLevel": "Immediate Churn Risk",
+      "estimatedLtvAtRisk": "₹45,000 - ₹1,20,000"
+    },
+    {
+      "customerId": "CUST-1436",
+      "tier": "Premium",
+      "location": "Chennai",
+      "complaintCount": 3,
+      "averageRating": 2.7,
+      "orderCount": 3,
+      "riskLevel": "Immediate Churn Risk",
+      "estimatedLtvAtRisk": "₹45,000 - ₹1,20,000"
+    },
+    {
+      "customerId": "CUST-1446",
+      "tier": "New",
+      "location": "Chennai",
+      "complaintCount": 3,
+      "averageRating": 2,
+      "orderCount": 4,
+      "riskLevel": "Operational Followup",
+      "estimatedLtvAtRisk": "₹8,500 - ₹18,000"
+    },
+    {
+      "customerId": "CUST-1061",
+      "tier": "VIP",
+      "location": "Delhi",
+      "complaintCount": 3,
+      "averageRating": 3.3,
+      "orderCount": 6,
+      "riskLevel": "Immediate Churn Risk",
+      "estimatedLtvAtRisk": "₹45,000 - ₹1,20,000"
+    },
+    {
+      "customerId": "CUST-1110",
+      "tier": "VIP",
+      "location": "Chennai",
+      "complaintCount": 2,
+      "averageRating": 1,
+      "orderCount": 2,
+      "riskLevel": "Immediate Churn Risk",
+      "estimatedLtvAtRisk": "₹45,000 - ₹1,20,000"
+    },
+    {
+      "customerId": "CUST-1130",
+      "tier": "Premium",
+      "location": "Pune",
+      "complaintCount": 2,
+      "averageRating": 3.3,
+      "orderCount": 4,
+      "riskLevel": "Immediate Churn Risk",
+      "estimatedLtvAtRisk": "₹45,000 - ₹1,20,000"
+    },
+    {
+      "customerId": "CUST-1276",
+      "tier": "New",
+      "location": "Chennai",
+      "complaintCount": 2,
+      "averageRating": 3.3,
+      "orderCount": 4,
+      "riskLevel": "Operational Followup",
+      "estimatedLtvAtRisk": "₹8,500 - ₹18,000"
+    },
+    {
+      "customerId": "CUST-1236",
+      "tier": "New",
+      "location": "Chennai",
+      "complaintCount": 2,
+      "averageRating": 2.3,
+      "orderCount": 3,
+      "riskLevel": "Operational Followup",
+      "estimatedLtvAtRisk": "₹8,500 - ₹18,000"
+    },
+    {
+      "customerId": "CUST-1408",
+      "tier": "Regular",
+      "location": "Delhi",
+      "complaintCount": 2,
+      "averageRating": 3,
+      "orderCount": 4,
+      "riskLevel": "Operational Followup",
+      "estimatedLtvAtRisk": "₹8,500 - ₹18,000"
+    },
+    {
+      "customerId": "CUST-1343",
+      "tier": "VIP",
+      "location": "Chennai",
+      "complaintCount": 2,
+      "averageRating": 3,
+      "orderCount": 3,
+      "riskLevel": "Immediate Churn Risk",
+      "estimatedLtvAtRisk": "₹45,000 - ₹1,20,000"
+    },
+    {
+      "customerId": "CUST-1048",
+      "tier": "Regular",
+      "location": "Chennai",
+      "complaintCount": 2,
+      "averageRating": 1.5,
+      "orderCount": 2,
+      "riskLevel": "Operational Followup",
+      "estimatedLtvAtRisk": "₹8,500 - ₹18,000"
+    },
+    {
+      "customerId": "CUST-1154",
+      "tier": "Regular",
+      "location": "Delhi",
+      "complaintCount": 2,
+      "averageRating": 1,
+      "orderCount": 2,
+      "riskLevel": "Operational Followup",
+      "estimatedLtvAtRisk": "₹8,500 - ₹18,000"
+    },
+    {
+      "customerId": "CUST-1046",
+      "tier": "Premium",
+      "location": "Pune",
+      "complaintCount": 2,
+      "averageRating": 2,
+      "orderCount": 2,
+      "riskLevel": "Immediate Churn Risk",
+      "estimatedLtvAtRisk": "₹45,000 - ₹1,20,000"
+    },
+    {
+      "customerId": "CUST-1288",
+      "tier": "VIP",
+      "location": "Chennai",
+      "complaintCount": 2,
+      "averageRating": 1,
+      "orderCount": 2,
+      "riskLevel": "Immediate Churn Risk",
+      "estimatedLtvAtRisk": "₹45,000 - ₹1,20,000"
+    }
+  ],
+  "totalAffectedCustomers": 169
+}
